@@ -1,0 +1,80 @@
+.chat-box{
+    background-color: #ebe6e6;
+    height: 100vh;
+    width: 25%;
+    position: fixed;
+    z-index: 3;
+
+    
+}
+.outer-form{
+    position: absolute;
+    bottom: 10px;
+    margin-left: 20px;
+}
+.form input{
+   height: 30px;
+}
+.chat-button{
+    border: 0;
+   background-color:rgb(89, 231, 153);
+   padding: 5px;
+   margin-left:10px;
+     height: 50px;
+     width: 50px;
+     font-size: 20px;
+     text-shadow: bisque;
+     border-radius: 10px;
+  
+    
+}
+input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgb(89, 231, 153);
+}
+.mess{
+    width: 260px;
+    height: 27px;
+    border: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding: 10px;
+
+    border-radius: 10px;
+}
+.group-chat{
+    font-weight: 700;
+    font-size: 25px;
+    margin-left: 14px;
+    margin-top: 6px;
+}
+.mymess{
+    color: black;
+    font-weight: 500;
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    margin-top:20px;
+    max-width: 200px;
+    
+    word-wrap: break-word;
+    background-color: rgb(92, 197, 204);
+}
+#chatbox
+{
+    overflow-y: scroll;
+    height: 80vh;
+}
+
+.others-mess{
+    color: black;
+    font-weight: 500;
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+    margin-top:20px;
+    max-width: 200px;
+    
+    word-wrap: break-word;
+    background-color: rgb(105, 214, 178);
+}

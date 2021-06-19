@@ -1,0 +1,23 @@
+
+.id{
+    color: blueviolet;
+    text-align: center;
+}
+.videogrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+video {
+    height: 345px;
+    width: 460px;
+     
+}
+.column video{
+      border-radius: 10%;
+     border: 2px solid blue;
+}
+.room-container
+{
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
