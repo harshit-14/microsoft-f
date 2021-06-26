@@ -1,9 +1,8 @@
 import React,{useEffect,useState,useRef,useCallback} from 'react'
 import io from 'socket.io-client'
 import './room.css'
-import RoomTop from './roomtop'
 import {useParams} from 'react-router-dom'
-import { useHistory,Redirect} from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import ButtonControl from './buttonControl'
 import { joinRoomAPI,fetchRoomAPI } from './api'
 import RemoteStreamVideo from './remotevideo'
@@ -27,7 +26,6 @@ export default function Room(props) {
     const [handRaise,setHandRaise] = useState(false)
     const [second,setSecond] = useState(0)
     const [isshare,setIsShare] = useState(false);
-    const [otherScreen,setOtherScreen] = useState(null)
     const [timer,setTimer] = useState("")
     const {roomId}=useParams()
     const [muted,setMuted] = useState(false)
@@ -37,7 +35,6 @@ export default function Room(props) {
     const currentUserVideoRef=useRef(null)
     const [participants,setParticipants]=useState([])  
     const peerInstance=useRef(null)
-    const [ischat,setIsChat] = useState(false)
     const [token,setToken] = useState()
    const [sharer,setSharer] = useState(false)
    const [name,setName] = useState('')
@@ -62,7 +59,7 @@ export default function Room(props) {
         setCurrentUserVideo();
           if(currentUserId)
         {
-          socketInstance.current=io.connect('http://localhost:5000')
+          socketInstance.current=io.connect('https://ms-teams-backend-hk.herokuapp.com')
          // console.log(socketInstance.current)
          socketInstance.current.on('get:peerId',()=>{
            socketInstance.current.emit('send:peerId',currentUserId)
@@ -264,7 +261,7 @@ export default function Room(props) {
                 peerId:incomingCall.peer
               }
              // console.log("post request------------------------->")
-                axios.post('http://localhost:5000/name',(temp))
+                axios.post('https://ms-teams-backend-hk.herokuapp.com/name',(temp))
                 .then((res)=>{
                   console.log(res);  
               const newParticipant={

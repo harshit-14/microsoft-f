@@ -1,5 +1,5 @@
 export const createRoomApi=async(author)=>{
-  const response=await fetch(`http://localhost:5000/rooms`,{
+  const response=await fetch(`https://ms-teams-backend-hk.herokuapp.com/rooms`,{
       method:'POST',
       headers:{
           'Accept':'application/json',
@@ -13,7 +13,7 @@ export const createRoomApi=async(author)=>{
 }
 
 export const fetchRoomAPI=async(roomId)=>{
-const response=await fetch(`http://localhost:5000/rooms/${roomId}`,{
+const response=await fetch(`https://ms-teams-backend-hk.herokuapp.com/rooms/${roomId}`,{
   method:'GET'
 })
 
@@ -23,7 +23,7 @@ return data;
 }
 
 export const joinRoomAPI=async(roomId,participant)=>{
-  const response=await fetch(`http://localhost:5000/rooms/${roomId}/join`,{
+  const response=await fetch(`https://ms-teams-backend-hk.herokuapp.com/rooms/${roomId}/join`,{
   method:'POST',
   headers:{
       'Accept':'application/json',

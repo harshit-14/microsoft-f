@@ -16,7 +16,7 @@ export default function Login(props)
 			password:password
 		}
          
-		axios.post('http://localhost:5000/api/auth/login',(data))
+		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/login',(data))
 		.then((res)=>{
 			props.setName(res.data.user.name)
 			props.setToken(res.data.token);
@@ -28,14 +28,14 @@ export default function Login(props)
 	}
     return(
         <div className="login-outer">
-	<img class="wave" src={wave}/>
+	<img class="wave" src={wave} alt="img-login"/>
 	<div class="login-container">
 		<div class="img">
-			<img src={bg}/>
+			<img src={bg} alt="img-login"/>
 		</div>
 		<div class="login-content">
 			<form >
-				<img src={avatar}/>
+				<img src={avatar} alt="img-login"/>
 				<h2 class="title-1">Welcome</h2>
            		<div class="input-div one">
            		   <div class="i">

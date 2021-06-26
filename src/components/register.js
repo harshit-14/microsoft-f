@@ -20,8 +20,8 @@ export default function Register(props)
 			password:password
 
 		}
-        console.log("register new user")
-		axios.post('http://localhost:5000/api/auth/register',(data))
+       // console.log("register new user")
+		axios.post('hhttps://ms-teams-backend-hk.herokuapp.com/auth/register',(data))
 		.then((res)=>{
 			props.setName(res.data.user.name)
 			props.setToken(res.data.token);
@@ -33,14 +33,14 @@ export default function Register(props)
 	}
     return(
         <div className="login-outer">
-        <img class="wave" src={wave}/>
+        <img class="wave" src={wave} alt="img-register"/>
         <div class="login-container">
             <div class="img">
-                <img src={bg}/>
+                <img src={bg} alt="img-register"/>
             </div>
             <div class="login-content">
                 <form>
-                    <img src={avatar}/>
+                    <img src={avatar} alt="img-register"/>
                     <h2 class="title-1">Welcome</h2>
                        <div class="input-div one"> 
                           <div class="i">
