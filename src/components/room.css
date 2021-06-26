@@ -1,23 +1,140 @@
 
-.id{
-    color: blueviolet;
+.room-container-1
+{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+   background-color: rgb(231, 241, 238);
+  min-height: 100vh;
+}
+
+.room-video-outer{
+    display: flex;
+    margin-top: 5vh;
+    margin-bottom: 20vh;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+video {
+    height: 300px;
+    width: 400px;
+    box-shadow: 0 0 20px rgb(71, 63, 63);
+    margin-top: 30px;
+    border-radius: 10%;
+    margin-left: 30px;
+}
+.column-one video{
+      border-radius: 10%;
+     margin-left: 3px;
+     margin-top: 30px;
+     box-shadow: 0 0 20px rgb(71, 63, 63);
+}
+.column-one div{
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+    margin-left: 150px;
+    width: 150px;
+    height: 30px;
+    box-shadow: 0 0 10px rgb(85, 81, 81);
+    border-radius: 10px;
+}
+.column-one{
+    text-align: center;
+  }
+.sharevideo{
+    margin-left: 60px;
+    margin-top: 50px;
+    height: 80%;
+    width: 65%;
+    border-radius: 2px;
+    border: 5px solid red;
+}
+.video-name{
+    width: 300px;
+    color: rgb(0, 225, 255);
+    background-color: rgb(6, 6, 7);
+    width: 250px;
     text-align: center;
 }
-.videogrid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-video {
-    height: 345px;
-    width: 460px;
-     
-}
-.column video{
-      border-radius: 10%;
-     border: 2px solid blue;
-}
-.room-container
+.column-1
 {
-    display: grid;
-    grid-template-columns: 75% 25%;
+   margin-bottom: 20vh;
+   margin-top: 5vh;
+  
+}
+
+.room-show-chat{
+    width: 75vw;
+    margin-left: -100px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.room-hide-chat{
+    width: 100vw;
+}
+
+.room-navbar{
+    position: fixed;
+    width: 100%;
+    background-color: rgb(56, 63, 66);
+    height: 35px;
+    color: aliceblue;
+}
+.room-navbar span{
+    float: right;
+    margin-right: 6vw;
+   font-size: 20px;
+}
+.room-navbar spa{
+    
+    margin-left: 3vw;
+   font-size: 20px;
+}
+.dropdownbtn{
+    background-color: #007700;
+    color: white;
+    padding: 6px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown{
+    display: inline-block;
+    position: relative;
+    margin-left: 56vw;
+}
+.dropdown-content{
+  
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   
+}
+.dropdown-content h6{
+
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    font-size: 20px;
+    color: black;
+   
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.dropdown-h6
+{
+    padding: 9px;
+}
+.dropdown-h6 i
+{
+    float: right;
+    color: black;
+    margin-right: 16px;
 }

@@ -1,0 +1,96 @@
+.button-outer-1
+{
+    background-color: rgb(87, 196, 187);
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 30% 30% 30% 10%;
+   
+  
+  
+}
+.danger{
+    border-radius: 50%;
+    height: 50px;
+    margin-left:2vw;
+    width: 50px;
+    box-shadow: 0 0 20px rgb(0, 5, 9);
+    cursor: pointer;
+    border: none;
+}
+.primary{
+    border-radius: 50%;
+    height: 50px;
+    margin-left:2vw;
+    width: 50px;
+    cursor: pointer;
+    border: none;
+
+}
+.primary:hover{
+    cursor: pointer;
+    box-shadow: 0 0 20px rgb(0, 5, 9);
+}
+.button-is-danger-1{
+    border-radius: 50%;
+    color:red;
+    
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border: none;
+}
+.button-is-danger-1:hover{
+    cursor: pointer;
+    box-shadow: 0 0 25px rgb(189, 19, 19);
+}
+
+.screenshare{
+  
+     border-radius: 10px;
+    border: none;
+    height: 38px;
+    padding: 6px;
+  width: 120px;
+     cursor: pointer;
+  
+}
+.screenshare:hover{
+    cursor: pointer;
+    box-shadow: 0 0 25px rgb(31, 2, 2);
+}
+.lets-chat{
+  
+ 
+    background-color:rgb(243, 243, 243) ;
+    color:rgb(0, 0, 0);
+    border: 0;
+    height: 45px;
+  
+    border-radius: 20px;
+    width: 100px;
+    box-shadow: 0 0 10px rgb(133, 128, 128);
+}
+.lets-chat:hover
+{
+    cursor: pointer;
+     box-shadow: 0 0 20px rgb(102, 99, 99);
+   
+}
+.bottom-chat{
+    margin-bottom: 30vh;
+}
+.buttoncontrol-time{
+    margin-left: 20px;
+    
+    font-size: 20px;
+    font-weight: 500;
+}
+.handRaise{
+    border: none;
+    color: rgb(0, 0, 0);
+    background: none;
+    margin-left: 19px;
+    font-size: 25px;
+    
+}

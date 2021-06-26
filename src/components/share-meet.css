@@ -1,0 +1,48 @@
+.share-meet-outer
+{
+    background-image:linear-gradient(#eeaeca,#94bbe9);
+    margin-top: 100px;
+    margin-top: 60px;
+    height: 190px;
+    width: 260px;
+    margin-left:-270px;
+    border-radius: 17px;
+    box-shadow: 0 0 20px rgb(31, 22, 10);
+}
+.from{
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 200px;
+    height: 500px;
+    border: none;
+    box-shadow: #94bbe9;
+}
+
+.to{
+    
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 200px;
+    border: none;
+    line-height: 50px;
+}
+.submit
+{
+     border: none;
+     margin-left: 20px;
+     background: none;
+     color: white;
+     font-weight: 700;
+     cursor: pointer;
+     font-size: 17px;
+     margin-top: 2px;
+}
+.from-text{
+    color: white;
+    z-index: 3;
+    padding-top: 10px;
+    padding-left: 18px;
+}
