@@ -12,7 +12,7 @@
 }
 section {
     height: 100vh;
-    display: flex;
+  
     justify-content: center;
     color: white;
     scroll-snap-align: start;
@@ -143,12 +143,7 @@ section {
  .create-room:hover{
      box-shadow: 0 0 10px rgb(214, 203, 203);
  }
- .for-free{
-     font-size: 30px;
-     margin-left: 20px;
-     font-weight: 500;
-     color: black;
- }
+
  .last-line{
     color:rgb(255, 255, 255);
     margin-top: 20vh;
@@ -159,41 +154,6 @@ section {
 .four{
     background-color: lightsalmon;
 }
-
-
-
-
-
-
-
-
-
-#one{
-    display: grid;
-    grid-template-columns: 60% 40%;
-    overflow-x: hidden;
-  }
-  .main-container{
-    height: 100vh;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-   
-  }
-  .one-1{
-    
-    background-color: rgb(0, 0, 0);
-  }
-  .one-heading-1{
-    font-size: 60px;
-    color: rgb(28, 255, 77);
-    font-family: 'Roboto Slab', serif;
-  }
-  
-  .one-img{
-   width: 40vw;
-   height: 60vh;
-   
-  }
   .img-two{
     height: 30%;
     width: 40%;
@@ -213,6 +173,7 @@ section {
     background:url(https://cms.bitlab.host/api/data/72/categories/101/background-image.jpg);
     background-size: cover;
     display: grid;
+    overflow-y: hidden;
     grid-template-columns: 1fr 1fr 1fr;
   }
   .two div img{
@@ -245,328 +206,93 @@ section {
       margin: 60px;
       box-shadow: 0 0 30px black;
   }
+  @media screen and (max-width:1400px){
+      .two-1{
+          padding:10px;
+          margin: 30px;
+      }
+      .two-2
+      {
+          padding: 10px;
+          margin: 30px;
+      }
+      .two-3{
+          padding: 10px;
+          margin: 30px;
+      }
+  }
+
   .img-head{
       text-align: center;
       font-size: 37px;
       font-family: freestyle;
       font-weight: 700;
   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.first-img{
-    height: 70vh;
-    width: 60vw;
-    float: right;
-    margin-top: 10vh;
-}
-.main-heading{
-    margin-top: 6vh;
-}
-
-.blue{
-    background: black;
-   top: 330vh;
-    width: 100%;
-    height: 80vh;
-}
-.blue-bottom{
-  margin-top: 330vh;
-
-}
-.createroom
-{
-    transition:0.5s linear;
-    height: 8vh;
-    background: rgb(48, 177, 228);
-    cursor: pointer;
-    border: none;
-    margin-left: 46vw;
-    padding: 10px;
-    font-size: 20px;
-    margin-top: 20px;
-    border-radius: 10px;
-    font-weight: 700;
-}
-.one-card{
-    margin-top: 230vh;
-}
-.createroom:hover {
-  box-shadow: 0 0 10px black;
-  cursor: pointer;
-  padding: 15px;
-}
-.blue-text{
-    color: aliceblue;
-  margin-left: 26vw;
-  font-size: 9vh;
-  font-family: 'Viaoda Libre', cursive;
-}
-
-.blue-img{
-  margin-left: 20px;
-  margin-top: 30px;
-     height: 150px;
-     width: 150px;
-}
-#we-believe{
-  
-     margin-left: 29vw;
-  
-}
-.card-1-heading{
-    text-align: center;
-    font-size: 8vh;
-    font-family: 'Viaoda Libre', cursive;
-}
-.one-card{
-    background-color:rgb(247,247,247)
-}
-.card-1-outer{
-    display: grid;
-    grid-template-columns: 40% 60%;
-}
-.card-1-text{
-    margin-left: 24vw;
-    margin-top: 8vh;
-    
-}
-.card-1-span{
-    font-size: 2rem;
-    margin-bottom: 12px;
+  .doubt-img img{
+      height: 30vh;
+      width: 40vw;
    
-}
-.card-1-span i{
-    color: rgb(48, 177, 228);
-    margin-right: 9px;
-}
-.card-1-span:hover{
-    font-size: 2.1rem;
-}
-.card-1-line{
-  font-size: 1.5rem;
-    margin-top: 15px;
-}
-.card-1-line i {
-    margin-right: 10px;
-}
-.card-1-line:hover{
-    font-size: 1.7rem;
-    color: rgb(223, 15, 84);
-}
-.card-1-line i:hover{
-    color: rgb(223, 15, 84);
-}
-.card-1-chat-with
-{
+  }
+  .doubt-img{
+      display: grid;
+      grid-template-columns: 40% 60%;
+  }
+  .doubt-heading{
+      margin-top: 40px;
+      font-family: 'Merriweather', serif;
+    }
    
-    padding: 10px;
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-.card-2-heading{
-    text-align: center;
-    font-size: 8vh;
-}
-.two-card{
-    background-color:rgb(247,247,247)
-}
-.card-2-outer{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    background-color: rgba(129,202,237,255);
-}
-.card-2-text{
-    margin-left: 16vw;
-    margin-top: 8vh;
-}
-.card-2-span{
-    font-size: 2rem;
-    margin-bottom: 12px;
-}
-.card-2-span i{
-    color: rgb(38, 0, 255);
-    margin-right: 9px;
-}
-.card-2-span:hover{
-    font-size: 2.1rem;
-}
-.card-2-line{
-  font-size: 1.5rem;
-    margin-top: 15px;
-}
-.card-2-line i {
-    margin-right: 10px;
-}
-.card-2-line:hover{
-    font-size: 1.7rem;
-    color: rgb(129, 15, 223);
-}
-
-.card-2-chat-with
-{
-    margin: 5px;
-    padding-top: 12px;
-    font-size: 2rem;
-    font-weight: 700;
-}
-.img-2{
-    margin-left: 17vw;
-}
-
-.card-3-heading{
-    text-align: center;
-    font-size: 8vh;
-}
-.two-card{
-    background-color:rgb(247,247,247)
-}
-.card-3-outer{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    background-color: rgb(196, 170, 243);
-}
-.card-3-text{
-    margin-left: 16vw;
-    margin-top: 8vh;
-}
-.card-3-span{
-    font-size: 2rem;
-    margin-bottom: 12px;
-}
-.card-3-span i{
-    color: rgb(38, 0, 255);
-    margin-right: 9px;
-}
-.card-3-span:hover{
-    font-size: 2.1rem;
-}
-.card-3-line{
-  font-size: 1.5rem;
-    margin-top: 15px;
-}
-.card-3-line i {
-    margin-right: 10px;
-}
-.card-3-line:hover{
-    font-size: 1.7rem;
-    color: rgb(62, 63, 62);
-}
-
-.card-3-chat-with
-{
-    margin: 5px;
-    padding-top: 12px;
-    font-size: 2rem;
-    font-weight: 700;
-}
-.img-3{
-    margin-left: 7vw;
-}
-
-
-
-
-
-
-
-
-#joincode:focus{
-    box-shadow: 0 0 10px black;
-}
-
-@media screen and (max-width:650px) {
-  
-    .blue{
-        width: 100%;
-        height: 47vh;
+    .doubt-heading pre{
+        font-weight: 600;
+        font-size: 40px;
+        font-family: 'Dancing Script', cursive;
     }
-    .blue-img{
-        height: 70px;
-        width: 70px;
-        margin-top: 50px;
-    }
-    .main-heading{
-    }
-    #we-believe{
-  
-        margin-left: 12vw;
-     
-   }
-    .blue-text{
-        font-size: 30px;
-        margin-left: 14px;
-        font-family: 'Viaoda Libre', cursive;
-    }
-    .createroom{
-        transition:0.5s linear;
+    .credits{
+        background-color: #d585f5;
+        margin-top: 53vh;
         height: 8vh;
-        background: rgb(48, 177, 228);
-        cursor: pointer;
-        border: none;
-        margin-left: 30vw;
-        padding: 10px;
-        font-size: 20px;
-        margin-top: 20px;
-        border-radius: 10px;
-        font-weight: 700;
-    }
-    .card-1-heading{
         text-align: center;
-        font-size: 5vh;
-        font-family: 'Viaoda Libre', cursive;
+        font-weight: 600;
+        color: #000000;
+        font-size: 20px;
     }
-    .card-1-outer img{
-        height: 40vh;
-        width: 100vw;
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

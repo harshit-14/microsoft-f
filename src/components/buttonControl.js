@@ -90,7 +90,7 @@ return(
     <OverlayTrigger
             placement="top"
             overlay={<Popover id="popover-basic"><Popover.Title as="h3">Participants</Popover.Title></Popover>}>
-            <button className={`${props.muted ? 'danger' : 'primary' }`} onClick={()=>{props.setPeople(!props.people)}}>
+            <button className="danger" onClick={()=>{props.setPeople(!props.people)}}>
                 <span className="icon">
                 <i class="fas fa-users"></i>
                 {props.len>0?<span>{props.length}</span>:<span></span>}
