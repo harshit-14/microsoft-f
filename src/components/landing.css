@@ -1,52 +1,326 @@
 @import url('https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Merriweather:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lobster&family=Merriweather:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:ital,wght@1,700&display=swap');
+.main-container{
+    scroll-snap-type: y mandatory;
+     overflow-y: scroll;
+     height: 100vh;
+}
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    color: white;
+    scroll-snap-align: start;
+}
 
+.three{
+    background-color: #49BEB7;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.microsoft-team{
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    font-size: 10vh;
+    font-family: 'Merriweather', serif;
+}
+.three-img{
+    position: relative;
+    height: 70vh;
+    width: 44vw;
+      box-shadow: 0 0 30px black;
+    border-radius: 0 150px 20px 0;
+    background-image: url(https://images.unsplash.com/photo-1503423571797-2d2bb372094a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80);
+    backdrop-filter: blur(5px);
+}
+
+.all-icons{
+    
+   margin-left: 4px;
+   align-items: center;
+   margin-top: 12px;
+  
+   position: absolute;
+   display: flex;
+   z-index: 6;
+  
+}
+.icon-text{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+    font-weight: 500;
+}
+.icon-text:hover{
+    color: rgb(14, 255, 255);
+    background-color: #000000;
+}
+.icon-mic
+{  color: rgb(2, 7, 75);
+    align-items: center;
+    font-size: 10vh;
+}
+.icon-screen{
+    color: rgb(224, 0, 75);
+    font-size: 10vh;
+}
+.icon-people{
+   color: rgb(177, 0, 0);
+    font-size: 10vh;
+}
+.icon-chat{
+   color: rgb(104, 0, 114);
+    font-size: 10vh;
+}
+.join-meet{
+    color: lightsalmon;
+    text-align: center;
+    font-weight: 800;
+    font-size: 40px;
+    margin-top: 40px;
+    font-family: 'Merriweather', serif;
+    
+}
+.join-div{
+    margin-top: 7vh;
+    margin-left: 12vw;
+}
+.join-button{
+    padding: 10px;
+    background-color: rgb(183, 201, 202);
+    border-radius: 10px;
+    margin: auto;
+    margin-left: 50px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.join-button:hover{
+    box-shadow: 0 0 10px black;
+}
+
+#joincode{
+  background-color: rgb(203, 230, 221);
+  
+  height: 30px;
+  width: 250px;
+  font-size: 20px;
+  outline: none;
+  padding: 20px;
+}
+.still{
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 10vw;
+    margin-top: 10vh;
+}
+.create-text{
+    font-size: 40px;
+    font-weight: 800;
+    margin-left: 13vw;
+    margin-top: 5vh;
+    font-family: 'Merriweather', serif;
+    color: #FC5185;
+} 
+.create-room{
+    padding: 10px;
+    background-color: rgb(195, 231, 212);
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 7vh;
+    margin-left: 19vw;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-weight: 700;
+ }
+ .create-room:hover{
+     box-shadow: 0 0 10px rgb(214, 203, 203);
+ }
+ .for-free{
+     font-size: 30px;
+     margin-left: 20px;
+     font-weight: 500;
+     color: black;
+ }
+ .last-line{
+    color:rgb(255, 255, 255);
+    margin-top: 20vh;
+    margin-left: 13vw;
+    font-size: 40px;
+    font-family: 'Dancing Script', cursive;
+ }
+.four{
+    background-color: lightsalmon;
+}
+
+
+
+
+
+
+
+
+
+#one{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    overflow-x: hidden;
+  }
+  .main-container{
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+   
+  }
+  .one-1{
+    
+    background-color: rgb(0, 0, 0);
+  }
+  .one-heading-1{
+    font-size: 60px;
+    color: rgb(28, 255, 77);
+    font-family: 'Roboto Slab', serif;
+  }
+  
+  .one-img{
+   width: 40vw;
+   height: 60vh;
+   
+  }
+  .img-two{
+    height: 30%;
+    width: 40%;
+  }
+  .img-outer{
+    background-color:rgb(73, 71, 71);
+    box-shadow: 0 0 10px white;
+    margin-right: 40px;
+    border-radius: 20px;
+  }
+  .one-outer{
+    margin-top: 10vh;
+    margin-left: 100px;
+  }
+  
+  .two{
+    background:url(https://cms.bitlab.host/api/data/72/categories/101/background-image.jpg);
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .two div img{
+       width: 350px;
+    }
+    .img-text{
+        color: #000000;
+        text-align: center;
+        font-size: 20px;
+        justify-content: center;
+        margin-top: 20px;
+        font-weight: 500;
+    }
+  .two-1
+  {
+      padding: 20px;
+      background-color: #49BEB7;
+      margin: 60px;
+      box-shadow: 0 0 30px black;
+  }
+  .two-2{
+    padding: 20px;
+      background-color: #FC5185;
+      margin: 60px;
+      box-shadow: 0 0 30px black;
+  }
+  .two-3{
+    padding: 20px;
+      background-color: rgb(70, 248, 150);
+      margin: 60px;
+      box-shadow: 0 0 30px black;
+  }
+  .img-head{
+      text-align: center;
+      font-size: 37px;
+      font-family: freestyle;
+      font-weight: 700;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.first-img{
+    height: 70vh;
+    width: 60vw;
+    float: right;
+    margin-top: 10vh;
+}
+.main-heading{
+    margin-top: 6vh;
+}
 
 .blue{
-    background: linear-gradient(rgb(81, 146, 81),rgb(207, 212, 218),rgb(228, 237, 248));
+    background: black;
+   top: 330vh;
     width: 100%;
-    height: 55vh;
-}
-.navbar
-{
-    display: inline-block;
-   line-height: 30px;
-}
-.navbar-span-1{
-    margin-left: 80vw;
-    border: 0ch;
-    font-weight: 700;
-    font-size: 4vh;
-    color: rgb(253, 253, 253);
-     padding: 4px;
-     background: none;
-}
-.navbar-span-2{
-    margin-left: 4vw;
-    font-size: 4vh;
-    border: 0ch;
-    font-weight: 700;
-    background: none;
-    color: rgb(0, 0, 0);
-     padding: 4px;
-}
-.navbar-span-1:hover{
-    cursor: pointer;
-    color: black;
-    overflow: hidden;
-    background-color: aliceblue;
-    border-radius:10px;
-    opacity: 1;
-}
-.navbar-span-2:hover{
-    cursor: pointer;
-    color: black;
-    overflow: hidden;
-    background-color: aliceblue;
-    border-radius:10px;
-    opacity: 1;
+    height: 80vh;
 }
 .blue-bottom{
-  margin-top: -40px;
+  margin-top: 330vh;
+
 }
 .createroom
 {
@@ -62,14 +336,17 @@
     border-radius: 10px;
     font-weight: 700;
 }
-
+.one-card{
+    margin-top: 230vh;
+}
 .createroom:hover {
   box-shadow: 0 0 10px black;
   cursor: pointer;
   padding: 15px;
 }
 .blue-text{
-  margin-left: 36vw;
+    color: aliceblue;
+  margin-left: 26vw;
   font-size: 9vh;
   font-family: 'Viaoda Libre', cursive;
 }
@@ -83,6 +360,7 @@
 #we-believe{
   
      margin-left: 29vw;
+  
 }
 .card-1-heading{
     text-align: center;
@@ -104,7 +382,7 @@
 .card-1-span{
     font-size: 2rem;
     margin-bottom: 12px;
-    inline-size: 12px;
+   
 }
 .card-1-span i{
     color: rgb(48, 177, 228);
@@ -115,7 +393,7 @@
 }
 .card-1-line{
   font-size: 1.5rem;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 .card-1-line i {
     margin-right: 10px;
@@ -129,8 +407,8 @@
 }
 .card-1-chat-with
 {
-    margin: 5px;
-    padding-top: 12px;
+   
+    padding: 10px;
     font-size: 2rem;
     font-weight: 700;
 }
@@ -154,7 +432,6 @@
 .card-2-span{
     font-size: 2rem;
     margin-bottom: 12px;
-    inline-size: 12px;
 }
 .card-2-span i{
     color: rgb(38, 0, 255);
@@ -165,7 +442,7 @@
 }
 .card-2-line{
   font-size: 1.5rem;
-    margin-top: 25px;
+    margin-top: 15px;
 }
 .card-2-line i {
     margin-right: 10px;
@@ -184,4 +461,112 @@
 }
 .img-2{
     margin-left: 17vw;
+}
+
+.card-3-heading{
+    text-align: center;
+    font-size: 8vh;
+}
+.two-card{
+    background-color:rgb(247,247,247)
+}
+.card-3-outer{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    background-color: rgb(196, 170, 243);
+}
+.card-3-text{
+    margin-left: 16vw;
+    margin-top: 8vh;
+}
+.card-3-span{
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+.card-3-span i{
+    color: rgb(38, 0, 255);
+    margin-right: 9px;
+}
+.card-3-span:hover{
+    font-size: 2.1rem;
+}
+.card-3-line{
+  font-size: 1.5rem;
+    margin-top: 15px;
+}
+.card-3-line i {
+    margin-right: 10px;
+}
+.card-3-line:hover{
+    font-size: 1.7rem;
+    color: rgb(62, 63, 62);
+}
+
+.card-3-chat-with
+{
+    margin: 5px;
+    padding-top: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.img-3{
+    margin-left: 7vw;
+}
+
+
+
+
+
+
+
+
+#joincode:focus{
+    box-shadow: 0 0 10px black;
+}
+
+@media screen and (max-width:650px) {
+  
+    .blue{
+        width: 100%;
+        height: 47vh;
+    }
+    .blue-img{
+        height: 70px;
+        width: 70px;
+        margin-top: 50px;
+    }
+    .main-heading{
+    }
+    #we-believe{
+  
+        margin-left: 12vw;
+     
+   }
+    .blue-text{
+        font-size: 30px;
+        margin-left: 14px;
+        font-family: 'Viaoda Libre', cursive;
+    }
+    .createroom{
+        transition:0.5s linear;
+        height: 8vh;
+        background: rgb(48, 177, 228);
+        cursor: pointer;
+        border: none;
+        margin-left: 30vw;
+        padding: 10px;
+        font-size: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        font-weight: 700;
+    }
+    .card-1-heading{
+        text-align: center;
+        font-size: 5vh;
+        font-family: 'Viaoda Libre', cursive;
+    }
+    .card-1-outer img{
+        height: 40vh;
+        width: 100vw;
+    }
 }

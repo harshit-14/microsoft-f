@@ -4,7 +4,7 @@ import bg from './bg.svg'
 import wave from './wave.png'
 import { useState } from 'react'
 import  axios from 'axios'
-export default function Login(props)
+export default function SignIn(props)
 {
 	
 	const[email,setEmail] = useState('');
@@ -15,8 +15,8 @@ export default function Login(props)
 			email:email,
 			password:password
 		}
-         
-		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/login',(data))
+         //https://ms-teams-backend-hk.herokuapp.com/api/auth/login
+		axios.post('http://localhost:5000/api/auth/login',(data))
 		.then((res)=>{
 			props.setName(res.data.user.name)
 			props.setToken(res.data.token);
@@ -24,6 +24,7 @@ export default function Login(props)
 		}) 
 		.catch(err=>{
 			console.log(err)
+			alert("-> "+err.response.data.msg)
 		})
 	}
     return(

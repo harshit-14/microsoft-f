@@ -12,7 +12,10 @@ export default function RemoteStreamVideo(props) {
         color:"white",
         borderRadius:10
     } 
-
+   const mystyle={
+       width:130,
+       height:130
+   }
     const userVideoRef = useRef()
    // console.log('remote video stream function')
    // console.log(props)
@@ -22,10 +25,10 @@ export default function RemoteStreamVideo(props) {
             userVideoRef.current.play()
         }
     }, [props.remoteStream])
-
+  console.log("------------------------------------------------------",props.len)
     return (
         <div>
-            <video width={640} height={480} ref={userVideoRef} id="video" />
+            <video ref={userVideoRef} id="video" style={props.len>2?{mystyle}:null}/>
             <div  style={style}>{props.name}</div>
         </div>
     )

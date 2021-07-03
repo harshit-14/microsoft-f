@@ -5,7 +5,7 @@ import wave from './wave.png'
 import { useState } from 'react'
 import  axios from 'axios'
 
-export default function Register(props)
+export default function SignUp(props)
 {
  
     const[name,setName] = useState('');
@@ -21,7 +21,8 @@ export default function Register(props)
 
 		}
        // console.log("register new user")
-		axios.post('hhttps://ms-teams-backend-hk.herokuapp.com/auth/register',(data))
+       //https://ms-teams-backend-hk.herokuapp.com/auth/register
+		axios.post('http://localhost:5000/api/auth/register',(data))
 		.then((res)=>{
 			props.setName(res.data.user.name)
 			props.setToken(res.data.token);
@@ -29,6 +30,7 @@ export default function Register(props)
 		}) 
 		.catch(err=>{
 			console.log(err)
+            alert("User already exist")
 		})
 	}
     return(

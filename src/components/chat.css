@@ -100,16 +100,18 @@ bottom: 15px;
      color: rgb(4, 11, 107);
 }
 .divfortime{
-  float: right;
+  margin-left: 100px;
   font-size: 12px;
   color: rgb(2, 14, 122);
 }
 .divforname
 {
+    font-size: 15px;
     color: rgb(255, 0, 0);
 
 }
 .temp{
-   
+ display: grid;
+ grid-template-columns: auto;
     padding-top: 12px;
 }

@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react'
 import './buttoncontrol.css'
 
 import {Tooltip,OverlayTrigger,Popover,Button,Spinner} from 'react-bootstrap'
-import { Socket } from 'socket.io-client'
+
 const style = {
     position : 'fixed',
     width: '100%',
@@ -30,7 +30,11 @@ export default function ButtonControl(props)
       
     useEffect(()=>{
         props.socket?.off("receive-raise-hand").on("receive-raise-hand",(name,roomid)=>{
+            
+            props.setHandRaiseName(name)
             props.setHandRaiseEntry(name)
+          
+            console.log("button controls hand raise name receive",name)
           console.log("name",name)
           console.log(roomid)
         })
@@ -71,23 +75,30 @@ useEffect(()=>{
          }
          
         }
-       // console.log("x",x)
-        //console.log("y",y)
-     //console.log("temp",temp);
-    // console.log(x.getMinutes());
     },1000)
     return ()=>{clearInterval(temp)}
  },[])
  
-  
+    console.log("length of participants is-------------",props.len)
 return(
     <>
+    <div className="faltu">eawrfwfvwvsvw</div>
 <div  style={style}>
     
     <div className="button-outer-1">
     <div className="buttoncontrol-time">{time}</div>
+    <OverlayTrigger
+            placement="top"
+            overlay={<Popover id="popover-basic"><Popover.Title as="h3">Participants</Popover.Title></Popover>}>
+            <button className={`${props.muted ? 'danger' : 'primary' }`} onClick={()=>{props.setPeople(!props.people)}}>
+                <span className="icon">
+                <i class="fas fa-users"></i>
+                {props.len>0?<span>{props.length}</span>:<span></span>}
+                </span>
+            </button>
+            </OverlayTrigger>
     <div>
-           <OverlayTrigger
+    <OverlayTrigger
             placement="top"
             overlay={<Popover id="popover-basic"><Popover.Title as="h3">Leave Call</Popover.Title></Popover>}>
             <button className="button-is-danger-1" onClick={props.onLeave}>
@@ -134,7 +145,6 @@ return(
             :
             <button className="screenshare" onClick={props.stopSharing}>stop share</button>
               }
-             
               <button className="lets-chat" onClick={props.setShowChat} >
                   Lets chat
               </button>

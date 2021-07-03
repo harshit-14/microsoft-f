@@ -7,19 +7,19 @@ import ButtonControl from './buttonControl'
 import { joinRoomAPI,fetchRoomAPI } from './api'
 import RemoteStreamVideo from './remotevideo'
 import ShareMeet from './share-meet'
-import Login from './login'
+import SignIn from './sign_in'
 import axios from 'axios'
 import Chat from './chat'
-import Register from './register'
+import SignUp from './sign_up'
 export default function Room(props) {
 
- // console.log('I am room.js')
-
- // console.log("participants",participants);
- 
- const socketInstance = useRef(null);
+    const socket = useRef(null);
+    const [record,setRecord] = useState(false);
+    const [dis,setDis] = useState(true)
     const history = useHistory();
     const screen = useRef(null);
+    const [handRaiseName,setHandRaiseName] = useState('')
+    const [people,setPeople] = useState(false)
     const [login,setLogin] = useState(true);
     const [handRaiseEntry,setHandRaiseEntry] = useState(null)
     const [handDownEntry,setHandDownEntry] = useState(null)
@@ -27,6 +27,7 @@ export default function Room(props) {
     const [second,setSecond] = useState(0)
     const [isshare,setIsShare] = useState(false);
     const [timer,setTimer] = useState("")
+    const [sharemail,setShareMail] = useState(false)
     const {roomId}=useParams()
     const [muted,setMuted] = useState(false)
     const [videoMuted,setVideoMuted] = useState(false)
@@ -36,84 +37,64 @@ export default function Room(props) {
     const [participants,setParticipants]=useState([])  
     const peerInstance=useRef(null)
     const [token,setToken] = useState()
-   const [sharer,setSharer] = useState(false)
-   const [name,setName] = useState('')
-   const [showchat,setShowChat] = useState(false)
-    //  console.log("participants",participants)
-  //  console.log(currentUserId)
+    const [sharer,setSharer] = useState(false)
+    const [name,setName] = useState('')
+    const [showchat,setShowChat] = useState(false)
+    const [messname,setMessName] = useState('');
+    const [mess,setMess] = useState('')
+    const myScreenMedia = useRef(null)
 
+    // useEffect to set peerInstance and setCUrrentUSerId
     useEffect(() => {
-    //   console.log("1 useeffect --> set the values")
-       //console.log("lets check before setting",props.currentUserId)
         peerInstance.current=props.peerInstance
-       
         setCurrentUser(props.currentUserId)
-        console.log("completed")
     },[props.peerInstance,props.currentUserId])
 
+    //useEffect to call SetCUrrentUSerVideo and make Socket connection with server
     useEffect(() => {
-      //console.log("useEffect 2 calls setCurrentUserVideo callback function")
       if(token)
       {
-        console.log("name of current user---------------------->",name);
-        setCurrentUserVideo();
+          setCurrentUserVideo();
           if(currentUserId)
-        {
-          socketInstance.current=io.connect('https://ms-teams-backend-hk.herokuapp.com')
-         // console.log(socketInstance.current)
-         socketInstance.current.on('get:peerId',()=>{
-           socketInstance.current.emit('send:peerId',currentUserId)
-        //   console.log(currentUserId)
-         //  console.log("get:peer---------------------------------->")
-         
-       })
-        }
-        
+          {
+              //https://ms-teams-backend-hk.herokuapp.com
+              socket.current=io.connect('https://ms-teams-backend-hk.herokuapp.com')
+              socket.current.on('get:peerId',()=>{
+              socket.current.emit('send:peerId',currentUserId)
+             })
+          }
       }
-        
-   
     },[currentUserId,token])
 
     
-      
+    //useEffect for useLeft the Meeting 
     useEffect(() => {
-    //  console.log("-----------useeffect 3 for userLeftListner")
+          const userLeftListner=(peerId)=>{
+          const filteredParticipants=participants.filter(
+                participant=>participant.id!==peerId)
+                setParticipants(filteredParticipants)
+          }
+                 socket.current?.on('user:left',userLeftListner)
+                  return()=>{
+                      socket.current?.off('user:left',userLeftListner)
+                  }
+    },[participants])
 
-        const userLeftListner=(peerId)=>{
-            const filteredParticipants=participants.filter(
-                participant=>participant.id!==peerId
-            )
-            setParticipants(filteredParticipants)
-        }
-
-        socketInstance.current?.on('user:left',userLeftListner)
-        
-        return()=>{
-            socketInstance.current?.off('user:left',userLeftListner)
-        }
-
-    }, [participants])
-
-      //useeffect of video and mute button
-
+     //useEffect for video on/off
       useEffect(()=>{
-      //  console.log("useeffect 4 for videoMuted");
-        if(!currentMediaStream.current)
-        {
-          return;
-        }
-       // console.log("getvideootrack",currentMediaStream.current)
-        const videoTracks  = currentMediaStream.current.getVideoTracks();
-        // console.log("video track",videoTracks);
-        if(videoTracks[0])
-        {
-          videoTracks[0].enabled = !videoMuted
-        }
+            if(!currentMediaStream.current)
+            {
+              return;
+            }
+            const videoTracks = currentMediaStream.current.getVideoTracks();
+            if(videoTracks[0])
+            {
+              videoTracks[0].enabled = !videoMuted
+            }
       },[videoMuted])
     
-     
+      //useEffect for Audio on/off
       useEffect(()=>{
-       // console.log("useeffect 5 for audioMuted")
         if(!currentMediaStream.current)
         {
           return;
@@ -125,43 +106,29 @@ export default function Room(props) {
         }
       },[muted])
     
-
-////////////////////////////////////////////////////////////////////////////
-    const setCurrentUserVideo=useCallback(async()=>{
+      //useCallback for setting currentUser Media Stream
+      const setCurrentUserVideo=useCallback(async()=>{
       console.log("usecallback setCurrentUserVideo")
         if(!currentUserVideoRef.current)
         {
-       //   console.log("1")
             return;
         }
         if(!currentUserId)
         {
-        //  console.log("2")
             return;
         }
-        
         try
         {
-         //  console.log('set current user vedio')
-            const mediaStream = await navigator.getUserMedia({video:true,audio:true},async(mediaStream)=>{
-                
+                const mediaStream = await navigator.getUserMedia({video:true,audio:true},async(mediaStream)=>{
                 currentUserVideoRef.current.srcObject=mediaStream
                 currentUserVideoRef.current.play();
                 currentMediaStream.current=mediaStream
-              // console.log("stream set")
-          //    console.log("api call to joinroomapi started");
           const data={
             id:currentUserId,
             name:name
           }
                 await joinRoomAPI(roomId,data)
-            //   console.log("api call to joinroomAPI ended");
-              //  console.log("room id",roomId);
-             //  console.log("user id",currentUserId);
-             // console.log('room joined..')
-           //   console.log("callback 2  callEveryOneInTheRoom started");
-                await callEveryoneInTheRoom(roomId)
-            //  console.log("callback 2  clalEveryOneInTheRoom ended")
+                await callingToAll(roomId)
             })
         }
         catch(error)
@@ -170,12 +137,10 @@ export default function Room(props) {
         }
     },[roomId,currentUserId,token])
 
-   ////////////////////////call///////////////////////// 
-    const call=useCallback((participant)=>{
-          // console.log("function to call")
+ 
+    const calling=useCallback((participant)=>{
         if(!currentMediaStream.current)
         {
-           // console.log('returning')
             return;
         }
         
@@ -196,24 +161,20 @@ export default function Room(props) {
            })
 
         },[participants]);
-///////////////////////////call every one///////////////////////////////////////////////
-    const callEveryoneInTheRoom=useCallback(async(roomId)=>{
-     //    console.log("useCallback callEveryoneInTheRoom")
+
+    const callingToAll=useCallback(async(roomId)=>{
+  
         try
         {
             const roomInformation=await fetchRoomAPI(roomId)
             const {participants}  = roomInformation;
-
-          //  console.log('here are participants to call--',participants)
-           // console.log("server participants",roomInformation.participants)
-              
             if(participants.length)
             {
-             //   console.log("calling everyone-- ",roomInformation.participants)
+         
                 const participantCall=[]=roomInformation.participants.filter(
                     
                     (participant)=>participant.id!==currentUserId)
-                    .map((participant)=>call(participant))
+                    .map((participant)=>calling(participant))
 
                     Promise.all(participantCall)
                     .then((values=[])=>{
@@ -229,12 +190,8 @@ export default function Room(props) {
             console.log(error)
         }
 
-    },[currentUserId,call])
+    },[currentUserId,calling])
 
-
- //console.log("answer se phele participants",participants)
-
-///////////////////////////////////answer call////////////////////////////////////////////////////////////////////////////////////////////////
     useEffect(() => {
 
        // console.log('useeffect for answer the call')
@@ -249,7 +206,7 @@ export default function Room(props) {
           }
           
          
-         // console.log('going to answer incomming call')
+          console.log('going to answer incomming call')
            incomingCall.answer(currentMediaStream.current)
 
           incomingCall.on('stream',function(remoteStream) {
@@ -260,7 +217,8 @@ export default function Room(props) {
                 roomId:roomId,
                 peerId:incomingCall.peer
               }
-             // console.log("post request------------------------->")
+            
+             //https://ms-teams-backend-hk.herokuapp.com/name
                 axios.post('https://ms-teams-backend-hk.herokuapp.com/name',(temp))
                 .then((res)=>{
                   console.log(res);  
@@ -290,10 +248,9 @@ export default function Room(props) {
              
              });
         }
-       //console.log("hk")
+      
         peerInstance.current.on('call', incomingCallListener);
-        //console.log("hk123")
-      //  return () =>peerInstance.current.off('call', incomingCallListener)
+      
      return()=> peerInstance.current.off('call',incomingCallListener)
     
     },[peerInstance,participants])
@@ -303,7 +260,7 @@ export default function Room(props) {
     //console.log("last me current user id check")
 
     const callForScreenShare = useCallback((stream,userId)=>{
-     // console.log("call for screen share functon chl gya")
+   
       peerInstance.current.call(userId,stream)
            
     })
@@ -311,24 +268,34 @@ export default function Room(props) {
     const stopSharing=()=>{
          setSharer(false)
          setIsShare(false)
-         socketInstance.current.emit("user-stop-sharing",roomId)
+         socket.current.emit("user-stop-sharing",roomId)
     }
 
-    socketInstance.current?.off("stop-sharing").on("stop-sharing",(roomid)=>{
+    socket.current?.off("stop-sharing").on("stop-sharing",(roomid)=>{
       if(roomid===roomId)
       {
         setIsShare(false)
       }
     })
-  
    
+   useEffect(()=>{
+       if(sharer)
+       {
+         callForScreenShare(myScreenMedia.current,participants[participants.length-1].id)
+       }
+   },[participants])
+
     function screenShare()
      {
-     //  console.log("------------------share------------------")
-      // console.log(participants);
-       
+       if(isshare===true)
+       {
+         alert("someone has shared screen")
+         return ;
+        }
+
        navigator.mediaDevices.getDisplayMedia().then(stream => {
-         socketInstance.current.emit("user-screen-share-id",currentUserId);
+         myScreenMedia.current = stream;
+         socket.current.emit("user-screen-share-id",currentUserId);
       
          let videoTracks=stream.getVideoTracks()[0]
          videoTracks.onended=()=>{
@@ -340,18 +307,15 @@ export default function Room(props) {
          setIsShare(true);                  //this is for screen share div or window 
           screen.current.srcObject=stream;
           screen.current.play(); 
-        //callForScreenShare();
+        
         participants.map((participant)=>callForScreenShare(stream,participant.id))
 
        })
      }
-
-    // console.log("id of person sharing screen se phele")
-     socketInstance.current?.off("id-of-person-sharing-screen").on("id-of-person-sharing-screen",(id)=>{
-       //console.log("i am sharing screen",id);
+     socket.current?.off("id-of-person-sharing-screen").on("id-of-person-sharing-screen",(id)=>{ 
      })
-        //console.log("sharere value------------------------------------>",sharer);     
-   // console.log('room ka return')
+      
+  
     
 
    
@@ -378,12 +342,24 @@ export default function Room(props) {
       return () => clearInterval(interval);
     })
 
+   useEffect(()=>{
+     console.log("hand raise ko nul karne wala useEffect")
+     if(handRaiseName)
+     {
+       setTimeout(()=>{
+        setHandRaiseName(null)
+       },3000)
+     
+     }
+     
+   },[handRaiseName])
 
     useEffect(()=>{
        
       if(handRaiseEntry)
       {
-        console.log("-------------raise------------->>>>>>>>>>>>",handRaiseEntry)
+        setHandRaiseName(handRaiseEntry);
+      
         const outer = document.getElementById('dropdown-content')
         const temp = document.createElement('h6')
         temp.textContent=handRaiseEntry;
@@ -393,19 +369,46 @@ export default function Room(props) {
         temp.append(x)
         temp.className="dropdown-h6"
         outer.appendChild(temp)
-        setHandRaiseEntry(null)
+    
+        setHandRaiseEntry(null);
+      
       }
       if(handDownEntry)
       {
-        console.log("-----------------down--------->>>>>>>>>>>>",handDownEntry)
+      
         const outer = document.getElementById('dropdown-content')
         const temp = document.getElementById(handDownEntry) 
-        outer.removeChild(temp)
+        if(temp)
+        {
+          outer.removeChild(temp)
+        }
         setHandDownEntry(null)
       }
 
 
     },[handRaiseEntry,handDownEntry])
+
+   useEffect(()=>{
+        var x  = document.getElementById("notification")
+        if(x)
+        {
+          setTimeout(()=>{
+           
+            setDis(true)
+            setMess('')
+            setMessName('')
+         },5000)
+        }
+        
+   },[mess,messname])
+
+    const copyLink = ()=>{
+      var x = document.getElementById("url_input");
+      x.select();
+      x.setSelectionRange(0,99999);
+      document.execCommand("copy");
+      alert("copied url")
+    }
 
     return (
       <div>
@@ -416,24 +419,29 @@ export default function Room(props) {
            <div>
              <div className="room-container-1">
                <div className="room-navbar">
-                 <spa>{timer
-               }</spa>
-               <span>@{name}</span>
-               <h className="dropdown">
+                 <spa>{timer}</spa>
+              <input type="text"  value={window.location.href} id="url_input"  ></input>
+               <button className="copy-link" onClick={()=>{copyLink()}}>Copy Link</button>
+               <button className="share-via-mail" onClick={()=>{setShareMail(!sharemail)}}>Share Via Mail</button>
+
+               <div className="dropdown">
                 <button className="dropdownbtn">participants <i class="fas fa-hand-paper"></i></button>
                 <div className="dropdown-content" id="dropdown-content">
                 </div>
-               </h>
                </div>
-
+               <span id="hand-raise-navbar" style={handRaiseName?{visibility:"visible"}:{visibility:"hidden"}}>{handRaiseName} Raised Hand</span>
+               <span className="username-navbar">@{name}</span>
+               </div>
+       
        <div className={showchat?"room-show-chat":"room-hide-chat"}>
        {
          isshare
          ?
-         <div ><video className="sharevideo" ref={screen}></video></div>
+         <div><video className="sharevideo" ref={screen}></video></div>
          :
-         <div style={{display:"none", width:0, height:0}}></div>
+        <div></div>
        }
+         {sharemail?<ShareMeet setShareMail={setShareMail}></ShareMeet>:<span style={{display:"none"}}></span>}
             {
                 participants.length>0?
                 <div className="room-video-outer">
@@ -445,11 +453,10 @@ export default function Room(props) {
                   {
                    participants.map(
                        participant=>(
-                           <RemoteStreamVideo key={participant.userId} remoteStream={participant.mediaStream} name={participant.name}></RemoteStreamVideo>   
+                           <RemoteStreamVideo key={participant.userId} remoteStream={participant.mediaStream} name={participant.name} len={participants.length}></RemoteStreamVideo>   
                        )
                    )
                 }
-              
                 </div>
                 :
                <div>
@@ -459,17 +466,36 @@ export default function Room(props) {
          </div>
                </div>
             }
+            <div id="notification" className="notification"  style={dis?{visibility:"hidden"}:{visibility:"visible"}}><i class="fas fa-sms"></i>     <span className="messname">{messname}</span><br></br><span>{mess}</span></div>
        </div>
-         <div className="room-chat-box"><Chat className="bottom-chat" showchat={showchat} setShowChat={()=>{setShowChat(false)}} currentUserId={props.currentUserId} name={name} socket={socketInstance.current}></Chat></div>
+          <div className={people?"people":"nopeople"}>
+            <div className="people-heading">Participants<span className="number">{participants.length}</span></div>
+            <div>
+               {
+                 people && participants.length>0
+                 ?
+                 <ul className="people-ul">
+                   {participants.map(participant=>(<li className="people-li"><i class="fas fa-user"></i><span>{participant.name}</span></li>))}
+                 </ul>
+                 :
+                 <div className="room-empty">No one in the Room</div>
+               }
+            </div>
+            </div>
+         <div className="room-chat-box"><Chat className="bottom-chat" dis={dis} setDis={setDis} mess={mess} setMess={setMess} messname={messname} setMessName={setMessName}  showchat={showchat} setShowChat={()=>{setShowChat(false)}} currentUserId={props.currentUserId} name={name} socket={socket.current}></Chat></div>
      </div>
     
    </div>
+   
    <div>
    <ButtonControl 
    onLeave={()=>{
+     
     const videoTracks = currentMediaStream.current.getVideoTracks()
     videoTracks[0].stop() 
-    socketInstance.current?.disconnect(roomId)
+ 
+    socket.current?.disconnect()
+   
      history.push('/')
    }}
    toggleMute={()=>setMuted(!muted)}
@@ -480,7 +506,7 @@ export default function Room(props) {
    shared = {sharer}
    stopSharing={()=>{stopSharing()}}
    currentUserId={currentUserId}
-   socket={socketInstance.current}
+   socket={socket.current}
    showchat={showchat}
    setShowChat={()=>{setShowChat(true)}}
    name={name}
@@ -491,15 +517,22 @@ export default function Room(props) {
    handDownEntry={handDownEntry}
    setHandRaiseEntry={setHandRaiseEntry}
    setHandDownEntry={setHandDownEntry}
+   setHandRaiseName={setHandRaiseName}
+   record={record}
+   setRecord={setRecord}
+   setPeople={setPeople}
+   people={people}
+   len={participants.len}
    > 
    </ButtonControl>
    </div>
+   
    </div>  
            :
            login?
-          <Login token={token} setToken={setToken} setName={setName} login={login} setLogin={setLogin}></Login>
+          <SignIn token={token} setToken={setToken} setName={setName} login={login} setLogin={setLogin}></SignIn>
           :
-          <Register login={login} setLogin={setLogin} token={token} setToken={setToken} setName={setName}></Register>
+          <SignUp login={login} setLogin={setLogin} token={token} setToken={setToken} setName={setName}></SignUp>
          }
       </div>  
     )

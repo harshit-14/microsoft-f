@@ -4,7 +4,7 @@
     width: 100%;
     padding: 10px;
     display: grid;
-    grid-template-columns: 30% 30% 30% 10%;
+    grid-template-columns: 15% 15% 30% 30% 10%;
    
   
   
@@ -82,7 +82,6 @@
 }
 .buttoncontrol-time{
     margin-left: 20px;
-    
     font-size: 20px;
     font-weight: 500;
 }
@@ -93,4 +92,7 @@
     margin-left: 19px;
     font-size: 25px;
     
+}
+.faltu{
+    bottom: 30vh;
 }

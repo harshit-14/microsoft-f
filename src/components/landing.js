@@ -1,22 +1,19 @@
 import React,{useCallback} from 'react'
-
 import {useHistory} from 'react-router-dom'
 import "./landing.css"
-
+import undrawone from '../images/connect to world.svg'
+import imgtwo from '../images/connection.svg'
+import chat from '../images/redChat.svg'
+import teamlayout from '../images/team layout.svg'
 import {createRoomApi} from './api'
-console.log("harshit")
+
 export default function Landing(props) {
      
-  console.log("i am landing.js");
-    console.log("Landing me props ka currentUserId -->",props.currentUserId);
-  //console.log(props)
     const history=useHistory()
     const createRoom=useCallback(async()=>{
-        console.log("i am landing ka hook create room");
         try
         {
             const roomInformation=await createRoomApi(props.currentUserId)
-            console.log('landing me fetch ke bad roominformation',roomInformation )
             history.push(`/rooms/${roomInformation.roomId}`)
         }
         catch(err)
@@ -25,56 +22,105 @@ export default function Landing(props) {
         }
 
     },[props.currentUserId])
+
+    const joinNow=()=>{
+        var x = document.getElementById("joincode")
+        if(x.value)
+        {
+            history.push(`/rooms/${x.value}`)
+        }
+        else{
+            alert("Please Fill The Code")
+        }
+       
+    }
     console.log("landing page ka return ")
     return (
         <div className="landing">
-        <div className="blue">
-            <div className="navbar">
-            <button className="navbar-span-1">Sign up</button>
-            <button className="navbar-span-2">Login</button>
+            <div className="main-container">
+          
+
+                <section className="three">
+                  <div>
+                      <div className="microsoft-team"><i class="fab fa-windows"></i>   Microsoft team</div>
+                      
+                      <div className="three-img">
+                        
+                          <div className="all-icons"> 
+                           <div style={{textAlign:"center",marginLeft:"12px"}}>
+                            <div className="icon-mic"><i class="fas fa-microphone-alt"></i></div>
+                            <div className="icon-text">Interact with Audio</div>
+                            </div>
+                            
+                           
+                          <div style={{textAlign:"center",marginLeft:"15px"}}>  
+                           <div className="icon-screen"><i class="fas fa-share"></i></div>
+                           <div  className="icon-text">Share Your Screen</div>
+                           </div>
+                           <div style={{textAlign:"center",marginLeft:"25px"}}>
+                           <div className="icon-people"><i class="fas fa-users"></i></div>
+                           <div  className="icon-text">Facecam</div>
+                           </div>
+                           <div style={{textAlign:"center",marginLeft:"38px"}}>
+                           <div className="icon-chat"><i class="fas fa-comments"></i></div>
+                           <div  className="icon-text">Let's Chat</div>
+                           </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div style={{background:"#085F63",borderRadius:"50px 0 0 0",marginLeft:"20px"}}>
+                <div className="join-meet">Join a meeting</div>
+
+                <div className="join-div">
+                    <input type="text" id="joincode" placeholder="Code XXXX-XXXX-XXX"></input>
+                    <button className="join-button" onClick={joinNow}>Join Now</button>
+                </div>
+
+                   <div className="create-text">Create Your Team</div> 
+                   <button onClick={createRoom} className="create-room">Create Now</button>
+                   <pre className="last-line">Be  a  Part  of   <i class="fab fa-windows"></i>   Teams </pre>
+                  </div>
+                
+                </section> 
+                <section className="two" id="two">
+  <div className="two-1">
+      <div className="img-head">Chat</div>
+      <img src={chat}></img>
+      <div className="img-text">Share your opinion and have fun with your team. 
+         Enjoy group chatting.</div>
+  </div>
+  <div className="two-2">
+     <div className="img-head">Video conference</div>
+      <img src={teamlayout} ></img>
+      <div className="img-text">Make and receive calls directly in Microsoft Teams with advanced features like group calling, cloud voicemail, and call transfers.</div>
+    
+  </div>
+  <div className="two-3">
+      <div className="img-head" >Share Screen</div>
+      <img src="https://displaynote.s3.amazonaws.com/images/img-broadcast-content.svg" ></img>
+      <div className="img-text"> This can include all the elements on a screen or simply one window, which allows for complete control over the visibility of your desktop and guarantees privacy.</div>
+  </div>
+</section>
+                <section className="four">
+                  <h1>Fourth page</h1>
+                </section> 
+                
+ 
+             
             </div>
-            <div className="blue-bottom">
-            <img className="blue-img" src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/1132ef5c-7a9a-410d-adfb-bc4cb2e69a18.png"></img>
-            <span className="blue-text" id="we-believe">We Believe In</span>
-            <br></br>
-            <span className="blue-text">Connecting People</span>
-            <button onClick={createRoom} className="createroom"> Create Team</button>
-            </div>
-        </div>
-        <div className="one-card">
-            <div className="card-1-heading">
-                What We Provide?
-            </div>
-            <div className="card-1-outer">
-            <img height="400px"  src="https://www.clipartkey.com/mpngs/m/245-2459856_uncategorized-group-chat-svg.png"></img>   
-            <div className="card-1-text">
-                <span className="card-1-span"><i class="fas fa-arrow-circle-right"></i>Create Your Team</span>
-                <br></br>
-                <span>
-                <span className="card-1-chat-with">Chat with</span>
-                <br></br>
-               <div className="card-1-line"><span><i class="fas fa-chevron-circle-right"></i></span>friends</div>
-               <div className="card-1-line"><span><i class="fas fa-chevron-circle-right"></i></span>family</div>
-               <div className="card-1-line"><span><i class="fas fa-chevron-circle-right"></i></span>coleagues</div>
-                </span>
-               
-            </div>
-            </div>  
-        </div>
-            <div className="card-2-outer">
-            <div className="card-2-text">
-                <span className="card-2-span"><i class="fas fa-arrow-circle-right"></i>Create Your Team</span>
-                <br></br>
-                <span>
-                <span className="card-2-chat-with">Share Link</span>
-                <br></br>
-               <div className="card-2-line"><span><i class="fas fa-chevron-circle-right"></i></span>conduct conference</div>
-               <div className="card-2-line"><span><i class="fas fa-chevron-circle-right"></i></span>family meeting</div>
-               <div className="card-2-line"><span><i class="fas fa-chevron-circle-right"></i></span>share screen</div>
-                </span>
-            </div>
-            <img height="400px" className="img-2" src="https://st3.depositphotos.com/11128870/35827/v/380/depositphotos_358270806-stock-illustration-work-home-illustration-video-call.jpg"></img>   
-            </div>  
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+          
         </div>
     )
 }

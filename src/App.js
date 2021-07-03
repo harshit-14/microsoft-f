@@ -6,8 +6,7 @@ import{BrowserRouter,Switch,Route,RouteComponentProps} from 'react-router-dom';
 import Landing from './components/landing';
 import './App.css';
 import Room from './components/room';
-import Login from './components/login'
-import Register from './components/register'
+
 function App() {
      
    // console.log("i am app.js")
@@ -19,7 +18,7 @@ function App() {
     const userId = uuidv4();
     peerInstance.current = new PeerJS(userId);
     //console.log("userID",userId)
-     // console.log("app me peerinstance",peerInstance.current)
+      console.log("app me peerinstance",peerInstance.current)
     peerInstance.current.on('open',(id)=>{
       
       console.log("current user id from app.js-->",userId);
@@ -41,8 +40,6 @@ function App() {
      
     <Room currentUserId={currentUserId} peerInstance={peerInstance.current}></Room>
    </Route>
-   <Route exact path="/register"><Register></Register></Route>
-   <Route exact path="/login"><Login></Login></Route>
    </BrowserRouter>
   );
 }
