@@ -415,7 +415,7 @@ export default function Room(props) {
          {
            token
            ?
-           <div classname="room-2-parts">
+           <div classname="room-2-parts" style={{overflow:"none"}}>
            <div>
              <div className="room-container-1">
                <div className="room-navbar">

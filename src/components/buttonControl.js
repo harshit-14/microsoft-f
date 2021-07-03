@@ -82,9 +82,8 @@ useEffect(()=>{
     console.log("length of participants is-------------",props.len)
 return(
     <>
-    <div className="faltu">eawrfwfvwvsvw</div>
-<div  style={style}>
     
+   <div  style={style}>
     <div className="button-outer-1">
     <div className="buttoncontrol-time">{time}</div>
     <OverlayTrigger

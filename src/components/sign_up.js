@@ -20,9 +20,8 @@ export default function SignUp(props)
 			password:password
 
 		}
-       // console.log("register new user")
-       //https://ms-teams-backend-hk.herokuapp.com/auth/register
-		axios.post('https://ms-teams-backend-hk.herokuapp.com/auth/register',(data))
+       //https://ms-teams-backend-hk.herokuapp.com/api/auth/register
+		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/register',(data))
 		.then((res)=>{
 			props.setName(res.data.user.name)
 			props.setToken(res.data.token);
