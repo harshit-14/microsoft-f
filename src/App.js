@@ -6,7 +6,9 @@ import{BrowserRouter,Switch,Route,RouteComponentProps} from 'react-router-dom';
 import Landing from './components/landing';
 import './App.css';
 import Room from './components/room';
-
+import Feedback from "./components/feedback"
+import Chatbox from './components/chatbox';
+import IndividualRoom from './components/individualroom'
 function App() {
      
    const peerInstance = useRef();
@@ -28,6 +30,9 @@ function App() {
     <Route path="/rooms/:roomId">
     <Room currentUserId={currentUserId} peerInstance={peerInstance.current}></Room>
    </Route>
+   <Route path="/feedback"><Feedback></Feedback></Route>
+   <Route path="/chatbox"><Chatbox currentUserId={currentUserId}></Chatbox></Route>
+   <Route path="/chatbox/:roomId" render={(props)=>{return <IndividualRoom{...props} key={props.location.key}/>}}></Route>
    </BrowserRouter>
   );
 }

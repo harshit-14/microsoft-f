@@ -6,28 +6,20 @@ import { useCallback, useEffect, useState } from 'react';
 
 export default function Chat(props)
 {
-  
-   
     const [data,setData]=useState("")
- 
-   const {roomId}=useParams()
-   
-  const showmessage=function(message,name){
-
+    const {roomId}=useParams()
+    const showmessage=function(message,name){
      if(!props.showchat)
      {
          props.setDis(false);
          props.setMess(message)
          props.setMessName(name)
      }
-
-    
   }
      
     const submitbutton =  useCallback(()=>{
         if(data)
-        {
-            
+        { 
             const outer = document.getElementById('chatbox')
             const newmess=document.createElement('div')
             newmess.textContent=data
@@ -38,7 +30,6 @@ export default function Chat(props)
             newmess.append(temp)
             const divforname = document.createElement('span')
             divforname.className = "divforname";
-          
             divforname.textContent = "~"+props.name;
             temp.append(divforname)
             const divfortime = document.createElement('span')
@@ -52,19 +43,16 @@ export default function Chat(props)
             if (!shouldScroll) {
                 outer.scrollTop = outer.scrollHeight;
             }
-           
             props.socket?.emit('send-message',data,roomId,props.CurrentUserId,props.name)
             setData('');    
         }
         
-
     })
 
    
     useEffect(()=>{
      
-        props.socket?.off('receive-message').on('receive-message',(message,roomI,currentUserId,name)=>{ 
-       
+            props.socket?.off('receive-message').on('receive-message',(message,roomI,currentUserId,name)=>{ 
             if(roomI===roomId)
             {
             const outer = document.getElementById('chatbox')
@@ -138,7 +126,6 @@ export default function Chat(props)
                }
            }
        }
-
        document.addEventListener("keydown",listener);
        return ()=>{
            document.removeEventListener("keydown",listener)

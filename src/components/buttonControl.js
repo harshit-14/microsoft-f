@@ -79,7 +79,7 @@ useEffect(()=>{
     return ()=>{clearInterval(temp)}
  },[])
  
-    console.log("length of participants is-------------",props.len)
+   // console.log("length of participants is-------------",props.len)
 return(
     <>
     
@@ -117,7 +117,7 @@ return(
             </OverlayTrigger>
             <OverlayTrigger
             placement="top"
-            overlay={<Popover id="popover-basic"><Popover.Title as="h3">Camera</Popover.Title></Popover>}>
+            overlay={<Popover id="popover-basic"><Popover.Title as="h3">Video</Popover.Title></Popover>}>
             <button className={`${props.videoMuted ? 'danger' : 'primary' } `} onClick={props.toggleVideoMute}>
                 <span className="icon">
                     <i className={`fas ${props.videoMuted ? 'fa-video-slash' : 'fa-video'}`}></i>
@@ -126,7 +126,7 @@ return(
             </OverlayTrigger>
             <OverlayTrigger
             placement="top"
-            overlay={<Popover id="popover-basic"><Popover.Title as="h3">{props.handRaise?<span>Hand Raise</span>:<span>Hand Down</span>}</Popover.Title></Popover>}>
+            overlay={<Popover id="popover-basic"><Popover.Title as="h3">{props.handRaise?<span>Hand Down</span>:<span>Hand Raise</span>}</Popover.Title></Popover>}>
             <button className="handRaise" onClick={handRaisefunction}>
                   {
                       props.handRaise?<i class="fas fa-hand-paper"></i>:<i class="fas fa-hand-rock"></i>

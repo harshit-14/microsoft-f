@@ -4,8 +4,9 @@ import "./landing.css"
 import question from '../images/question.svg'
 import chat from '../images/redChat.svg'
 import teamlayout from '../images/team layout.svg'
+import mail from '../images/mail.svg'
 import {createRoomApi} from './api'
-
+import Chatbox from './chatbox'
 export default function Landing(props){
      
         const history=useHistory()
@@ -70,6 +71,7 @@ export default function Landing(props){
                         </div>
                          <div className="create-text">Create Your Team</div> 
                          <button onClick={createRoom} className="create-room">Create Now</button>
+                         <button onClick={()=>{history.push("/chatbox")}} className="create-room">chatBox</button>
                         <pre className="last-line">Be  a  Part  of   <i class="fab fa-windows"></i>   Teams </pre>
                      </div>       
                 </section> 
@@ -101,14 +103,23 @@ export default function Landing(props){
                     <div className="doubt-img">
                         <img src={question}></img>
                         <div className="doubt-heading"><h2>Have a doubt ?</h2>
-                            <pre>Raise Your Hand with hand symbol at bottom.<br></br>
+                            <pre>Raise Your Hand with hand symbol at bottom .<br></br>
                                 Others can see on hovering on top partipants <i class="fas fa-hand-paper"></i> <br></br>icon and 
                                 will get a pop up too....
                             </pre>
                         </div>
                     </div>
+                    <div className="mail-img">
+                    <div className="mail-heading"><h2>Share link via mail ?</h2>
+                            <pre>Press share via mail option on top bar .<br></br>
+                                Enter your name and email id to which you<br></br> want to share meeting link.
+                            </pre>
+                        </div>
+                        <img src={mail}></img>
+                    </div>
                     <div className="credits">
-                        Developed By HARSHIT
+                         Developed By Harshit Kharbanda
+                        <div className="email">microsoft.teams.hk@gmail.com</div>
                     </div>
                 </section> 
             </div>

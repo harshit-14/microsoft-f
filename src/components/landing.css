@@ -9,10 +9,10 @@
     scroll-snap-type: y mandatory;
      overflow-y: scroll;
      height: 100vh;
+     overflow-x: hidden;
 }
 section {
     height: 100vh;
-  
     justify-content: center;
     color: white;
     scroll-snap-align: start;
@@ -247,17 +247,55 @@ section {
         font-size: 40px;
         font-family: 'Dancing Script', cursive;
     }
+   
+     
+    .mail-img img{
+        height: 30vh;
+        width: 40vw;
+     
+    }
+    .mail-img{
+        margin-top: 9vh;
+        display: grid;
+        grid-template-columns: 60% 40%;
+    }
+    .mail-heading{
+        margin-left: 50px;
+        margin-top: 40px;
+        font-family: 'Merriweather', serif;
+      }
+     
+      .mail-heading pre{
+          font-weight: 600;
+          font-size: 40px;
+          font-family: 'Dancing Script', cursive;
+      }
+
+   
     .credits{
+        
+        margin-top: 33px;
         background-color: #d585f5;
-        margin-top: 53vh;
-        height: 8vh;
+        margin-bottom: 0;
+        height: 12vh;
         text-align: center;
         font-weight: 600;
         color: #000000;
         font-size: 20px;
     }
+    @media  (max-width:1400px) {
 
-
+          .credits{
+        margin-top: 34px;
+        background-color: #d585f5;
+        margin-bottom: 0;
+        height: 12vh;
+        text-align: center;
+        font-weight: 600;
+        color: #000000;
+        font-size: 15px;
+    }
+    }
 
 
 

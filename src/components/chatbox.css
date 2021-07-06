@@ -1,0 +1,112 @@
+#chatbox-join-room{
+   font-weight: 600;
+    width: 10vw;
+}
+
+#chatbox-create-team{
+    font-size: 17px;
+    font-weight: 600;
+    width:10vw
+}
+.chatbox-both-buttons{
+    display: flex;
+}
+.chatbox-team-name{
+    margin-right: 20px;
+    float: left;
+    background-color: rgb(182, 182, 182);
+    font-size: 30px;
+    margin-right: 20px;
+    width: 20vw;
+    height: 88vh;
+    overflow-y: scroll;
+}
+.chatbox-link-name{
+    text-align: center;
+    font-size: 25px;
+    color:black;
+}
+.indiv-outer{
+    margin-top: -99vh;
+    color: aquamarine;
+   float: right;
+   width: 80vw;
+}
+.indiv-mess{
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    margin-left: 1vw;
+    width: 75vw;
+
+    height: 98vh;
+}
+.chatbox-join{
+    width: 10vw;
+    float: right;
+    margin-left: 50vw;
+}
+.chatbox-links{
+    text-align: center;
+   
+}
+.chatbox-link-name:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.indiv-input
+{
+    padding: 5px;
+    width: 60vw;
+    margin-right:20px;
+}
+.indiv-send
+{
+    width: 10vw;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+}
+.indiv-mess-append{
+    padding: 20px;
+    background-color: rgb(192, 238, 222);
+    overflow-y: scroll;
+    width: 100%;
+    margin-top: 2vh;
+    height: 75vh;
+
+}
+.indiv-room-name{
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: 700;
+   background-color: cadetblue;
+   border-radius: 10px;
+   box-shadow: 0 0 10px black;
+    margin-left: 30px;
+   height: 50px;
+
+}
+.indiv-messages{
+    color: black;
+}
+.indiv-name{
+      font-size: 20px;
+      font-weight: 800;
+      color:  brown;
+}
+.indiv-whole-mess
+{
+   
+   border-bottom: 2px solid rgb(2, 0, 109);
+   
+}
+.chatbox-your-team
+{
+    color: rgb(6, 1, 85);
+    font-weight: 600;
+    background-color: antiquewhite;
+}

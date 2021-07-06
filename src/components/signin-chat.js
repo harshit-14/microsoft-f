@@ -4,8 +4,9 @@ import bg from './bg.svg'
 import wave from './wave.png'
 import { useState } from 'react'
 import  axios from 'axios'
-export default function SignIn(props)
+export default function SignInChat(props)
 {
+
 	
 	const[email,setEmail] = useState('');
 	const[password,setPassword] = useState('');
@@ -18,10 +19,11 @@ export default function SignIn(props)
          //https://ms-teams-backend-hk.herokuapp.com/api/auth/login
 		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/login',(data))
 		.then((res)=>{
-			props.setName(res.data.user.name)
-			props.setToken(res.data.token);
-			sessionStorage.setItem('token',res.data.token)
-			sessionStorage.setItem('email',data.email)
+			    sessionStorage.setItem('email',res.data.user.email)
+                sessionStorage.setItem('name',res.data.user.name)
+                props.setName(res.data.user.name)
+                props.setEmail(res.data.user.email)
+                props.setLogin(true)
 		}) 
 		.catch(err=>{
 			console.log(err)
@@ -60,7 +62,7 @@ export default function SignIn(props)
            		    	<input placeholder="Password" type="password" class="input" onChange={(e)=>{setPassword(e.target.value)}}/>
             	   </div>
             	</div>
-            	<button  className="login-button" onClick={()=>{props.setLogin(false)}}>New User ?</button>
+            	<button  className="login-button" onClick={()=>{props.setLoginChat(false)}}>New User ?</button>
             	<input type="submit" class="btn" value="Login" onClick={(e)=>userlogin(e)}/>
             </form>
         </div>
