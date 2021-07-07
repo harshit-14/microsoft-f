@@ -1,7 +1,7 @@
-import './login.css'
-import avatar from './avatar.svg'
-import bg from './bg.svg'
-import wave from './wave.png'
+
+import avatar from '../svg/avatar.svg'
+import bg from '../svg/bg.svg'
+import wave from '../svg/wave.png'
 import { useState } from 'react'
 import  axios from 'axios'
 export default function SignInChat(props)

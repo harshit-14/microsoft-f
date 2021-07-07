@@ -3,14 +3,15 @@ import io from 'socket.io-client'
 import './room.css'
 import {useParams} from 'react-router-dom'
 import { useHistory} from 'react-router-dom'
-import ButtonControl from './buttonControl'
-import { joinRoomAPI,fetchRoomAPI } from './api'
-import RemoteStreamVideo from './remotevideo'
-import ShareMeet from './share-meet'
+import ButtonControl from '../lower-button-control/buttonControl'
+import { joinRoomAPI,fetchRoomAPI } from '../apis/api'
+import RemoteStreamVideo from '../remotevideo'
+import ShareMeet from '../share-meet/share-meet'
 import SignIn from './sign_in'
 import axios from 'axios'
-import Chat from './chat'
+import Chat from '../room-chat/chat'
 import SignUp from './sign_up'
+import Timer from '../timer'
 export default function Room(props){
 
     const socket = useRef(null);
@@ -24,9 +25,7 @@ export default function Room(props){
     const [handRaiseEntry,setHandRaiseEntry] = useState(null)
     const [handDownEntry,setHandDownEntry] = useState(null)
     const [handRaise,setHandRaise] = useState(false)
-    const [second,setSecond] = useState(0)
     const [isshare,setIsShare] = useState(false);
-    const [timer,setTimer] = useState("")
     const [sharemail,setShareMail] = useState(false)
     const {roomId}=useParams()
     const [muted,setMuted] = useState(false)
@@ -45,6 +44,14 @@ export default function Room(props){
     const myScreenMedia = useRef(null)
 
     // useEffect to set peerInstance and setCUrrentUSerId
+    useEffect(()=>{
+      console.log(sessionStorage.getItem('name'))
+      if(sessionStorage.getItem('name'))
+      {
+        setName(sessionStorage.getItem('name'))
+        setToken("user loged in before")
+      }
+    },[])
     useEffect(() => {
         peerInstance.current=props.peerInstance
         setCurrentUser(props.currentUserId)
@@ -302,29 +309,7 @@ export default function Room(props){
      socket.current?.off("id-of-person-sharing-screen").on("id-of-person-sharing-screen",(id)=>{ 
      })
       
-   useEffect(()=>{
-         let interval = setInterval(() => {
-        setSecond(second + 1);
-        let sec = second%60
-        let min = Math.floor(second/60)
-        let hr = Math.floor(second/3600)
-        if(sec<10)
-        {
-          sec='0'+sec
-        }
-        if(hr<10)
-        {
-          hr='0'+hr
-        }
-        if(min<10)
-        {
-          min='0'+min
-        }
-        setTimer(hr+':'+min+':'+sec)
-      }, 1000);
-      return () => clearInterval(interval);
-    })
-
+ 
    //useEffect for raise hand notification
    useEffect(()=>{
       if(handRaiseName)
@@ -422,15 +407,15 @@ export default function Room(props){
     marginLeft: "30px"
    }
     return(
-       <div>
+       <div >
            { 
               token
               ?
-                <div classname="room-2-parts" style={{overflow:"none"}}>
+                <div classname="room-2-parts" >
                     <div>
-                      <div className="room-container-1">
+                      <div className="room-container-1" >
                           <div className="room-navbar">
-                          <spa>{timer}</spa>
+                          <spa><Timer></Timer></spa>
                           <input type="text"  value={window.location.href} id="url_input"  ></input>
                           <button className="copy-link" onClick={()=>{copyLink()}}>Copy Link</button>
                           <button className="share-via-mail" onClick={()=>{setShareMail(!sharemail)}}>Share Via Mail</button>
@@ -441,7 +426,7 @@ export default function Room(props){
                           <span id="hand-raise-navbar" style={handRaiseName?{visibility:"visible"}:{visibility:"hidden"}}>{handRaiseName} Raised Hand</span>
                           <span className="username-navbar">@{name}</span>
                         </div>
-                          <div className={showchat?"room-show-chat":"room-hide-chat"}>
+                          <div className={showchat?"room-show-chat":"room-hide-chat"} >
                           {
                             isshare
                             ?
@@ -452,9 +437,9 @@ export default function Room(props){
                             {sharemail?<ShareMeet setShareMail={setShareMail}></ShareMeet>:<span style={{display:"none"}}></span>}
                                 {
                                     participants.length>0?
-                                    <div className="room-video-outer">
+                                    <div className="room-video-outer" >
                                     
-                                  <div className="column-one">
+                                  <div className="column-one" >
                                     <video ref={currentUserVideoRef} style={participants.length<2?video_2:participants.length===2?video_3:video_more} muted/>
                                       <div>You</div>
                                   </div>

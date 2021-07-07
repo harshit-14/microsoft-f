@@ -3,12 +3,12 @@ import PeerJS from 'peerjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {v4 as uuidv4} from 'uuid';
 import{BrowserRouter,Switch,Route,RouteComponentProps} from 'react-router-dom';
-import Landing from './components/landing';
+import Landing from './components/landing page/landing';
 import './App.css';
-import Room from './components/room';
-import Feedback from "./components/feedback"
-import Chatbox from './components/chatbox';
-import IndividualRoom from './components/individualroom'
+import Room from './components/meeting room/room';
+import Feedback from "./components/feedback/feedback"
+import Chatbox from './components/chatbox/chatbox';
+import IndividualRoom from './components/chatbox/individualroom'
 function App() {
      
    const peerInstance = useRef();

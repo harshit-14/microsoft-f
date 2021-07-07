@@ -1,11 +1,11 @@
-import avatar from './avatar.svg'
-import bg from './bg.svg'
+import avatar from '../svg/avatar.svg'
+import bg from '../svg/bg.svg'
 import './login.css'
-import wave from './wave.png'
+import wave from '../svg/wave.png'
 import { useState } from 'react'
 import  axios from 'axios'
 const  nodemailer = require('nodemailer')
-export default function SignUpChat(props)
+export default function SignUp(props)
 {
  
     const[name,setName] = useState('');
@@ -23,11 +23,9 @@ export default function SignUpChat(props)
        //https://ms-teams-backend-hk.herokuapp.com/api/auth/register
 		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/register',(data))
 		.then((res)=>{
-            sessionStorage.setItem('email',res.data.user.email)
-            sessionStorage.setItem('name',res.data.user.name)
-            props.setName(res.data.user.name)
-            props.setEmail(res.data.user.email)
-            props.setLogin(true)
+			props.setName(res.data.user.name)
+			props.setToken(res.data.token);
+			sessionStorage.setItem('token',res.data.token)
 		}) 
 		.catch(err=>{
 			console.log(err)
@@ -71,7 +69,7 @@ export default function SignUpChat(props)
                                <input placeholder="Password" type="password" class="input" onChange={(e)=>{setPassword(e.target.value)}}/>
                        </div>
                     </div>
-                	<button  className="login-button" onClick={()=>{props.setLoginChat(true)}}>Already have an account ?</button>
+                	<button  className="login-button" onClick={()=>{props.setLogin(true)}}>Already have an account ?</button>
                     <input type="submit" class="btn" value="Register" onClick={(e)=>userregister(e)}/>
                 </form>
             </div>

@@ -5,8 +5,8 @@ import question from '../images/question.svg'
 import chat from '../images/redChat.svg'
 import teamlayout from '../images/team layout.svg'
 import mail from '../images/mail.svg'
-import {createRoomApi} from './api'
-import Chatbox from './chatbox'
+import {createRoomApi} from '../apis/api'
+import Chatbox from '../chatbox/chatbox'
 export default function Landing(props){
      
         const history=useHistory()
@@ -70,8 +70,8 @@ export default function Landing(props){
                             <button className="join-button" onClick={joinNow}>Join Now</button>
                         </div>
                          <div className="create-text">Create Your Team</div> 
-                         <button onClick={createRoom} className="create-room">Create Now</button>
-                         <button onClick={()=>{history.push("/chatbox")}} className="create-room">chatBox</button>
+                         <button onClick={createRoom} className="create-room">New Meeting</button>
+                         <button onClick={()=>{history.push("/chatbox")}} className="create-room chat-room">Chat Room</button>
                         <pre className="last-line">Be  a  Part  of   <i class="fab fa-windows"></i>   Teams </pre>
                      </div>       
                 </section> 

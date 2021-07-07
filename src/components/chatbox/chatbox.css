@@ -36,17 +36,11 @@
     margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
-
     margin-left: 1vw;
     width: 75vw;
-
     height: 98vh;
 }
-.chatbox-join{
-    width: 10vw;
-    float: right;
-    margin-left: 50vw;
-}
+
 .chatbox-links{
     text-align: center;
    
@@ -79,15 +73,17 @@
 
 }
 .indiv-room-name{
-    padding: 10px;
+    text-align: center;
+    margin: 10px;
+    padding-top: 10px;
     color: rgb(255, 255, 255);
     font-size: 20px;
     font-weight: 700;
    background-color: cadetblue;
    border-radius: 10px;
    box-shadow: 0 0 10px black;
-    margin-left: 30px;
-   height: 50px;
+   
+ 
 
 }
 .indiv-messages{
@@ -109,4 +105,16 @@
     color: rgb(6, 1, 85);
     font-weight: 600;
     background-color: antiquewhite;
+}
+.chatbox-join{
+    width: 10vw;
+    float: right;
+    margin-left: 80vw;
+}
+
+.indiv-upper-grid
+{
+    display: grid;
+    grid-template-columns: 20% 20% 15% 25% 20%;
+    
 }

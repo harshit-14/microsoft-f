@@ -32,7 +32,6 @@ export default function Chat(props) {
 
     console.log(props)
     useEffect(()=>{
-        console.log("new socket created")
         socketInstance.current=io('https://ms-teams-backend-hk.herokuapp.com');
         socketInstance.current.emit('join-room',roomId);
         
@@ -175,7 +174,7 @@ export default function Chat(props) {
                     {
                     room.map(r=>(
                         <div className="chatbox-links">
-                        <Link key={r.roomId} to={{pathname:"/chatbox/"+r.roomId,key:roomId,socketInstance:socketInstance.current,nameofroom:r.name}}><div className="chatbox-link-name">{r.name}</div></Link>
+                        <Link key={r.roomId} to={{pathname:"/chatbox/"+r.roomId,key:roomId,socketInstance:socketInstance.current,nameofroom:r.name,loginChat:{loginChat}}}><div className="chatbox-link-name">{r.name}</div></Link>
                         </div>
                     ))
                     }

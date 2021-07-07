@@ -140,13 +140,14 @@ section {
     font-size: 25px;
     font-weight: 700;
  }
+
  .create-room:hover{
      box-shadow: 0 0 10px rgb(214, 203, 203);
  }
 
  .last-line{
     color:rgb(255, 255, 255);
-    margin-top: 20vh;
+    margin-top: 12vh;
     margin-left: 13vw;
     font-size: 40px;
     font-family: 'Dancing Script', cursive;

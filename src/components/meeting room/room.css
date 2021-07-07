@@ -68,8 +68,9 @@ video{
 .column-1
 {
    margin-bottom: 20vh;
-   margin-top: 15vh;
-  margin-left: 30vw;
+   margin-top: 5vh;
+   margin-left: 30vw;
+  
 }
 
 .room-show-chat{
@@ -80,7 +81,7 @@ video{
 }
 .room-show-chat .column-1{
     margin-bottom: 20vh;
-    margin-top: 15vh;
+    margin-top: 5vh;
    margin-left: -25vw;
 }
 .room-hide-chat{
