@@ -101,8 +101,8 @@ export default function ParticularRoom(props) {
     }
 
     const joinRoom=()=>{
-        window.open(`/rooms/${roomId}`, "_blank")
-            
+        history.push(`/rooms/${roomId}`)
+        //window.open(`/rooms/${roomId}`, "_blank")    
     }
     const copyCode=()=>{
         var x = document.getElementById("url_input");
