@@ -16,7 +16,7 @@ export default function SignIn(props)
 			password:password
 		}
          //https://ms-teams-backend-hk.herokuapp.com/api/auth/login
-		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/login',(data))
+		axios.post('https://ms-teams-backend-hk.herokuapp.com/login',(data))
 		.then((res)=>{
 			props.setName(res.data.user.name)
 			props.setToken(res.data.token);

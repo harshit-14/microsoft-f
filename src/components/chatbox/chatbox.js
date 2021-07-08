@@ -39,7 +39,7 @@ export default function Chat(props) {
 
     useEffect(() => {
             console.log('useEffect count',count)
-            axios.get(`https://ms-teams-backend-hk.herokuapp.com/personDetails/${email}`)
+            axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/userInfo/${email}`)
             .then(data=>{
                 if(data.data)
                 {

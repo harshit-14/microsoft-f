@@ -18,8 +18,8 @@ export default function SignUpChat(props)
 			password:password
 
 		}
-       //https://ms-teams-backend-hk.herokuapp.com/api/auth/register
-		axios.post('https://ms-teams-backend-hk.herokuapp.com/api/auth/register',(data))
+       //https://ms-teams-backend-hk.herokuapp.com/register
+		axios.post('https://ms-teams-backend-hk.herokuapp.com/register',(data))
 		.then((res)=>{
             sessionStorage.setItem('email',res.data.user.email)
             sessionStorage.setItem('name',res.data.user.name)
