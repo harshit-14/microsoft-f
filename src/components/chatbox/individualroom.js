@@ -101,7 +101,7 @@ export default function ParticularRoom(props) {
     }
 
     const joinRoom=()=>{
-        history.push(`/rooms/${roomId}`)
+        window.open(`/rooms/${roomId}`, "_blank")
             
     }
     const copyCode=()=>{
@@ -150,7 +150,6 @@ export default function ParticularRoom(props) {
                            }
                        </Dropdown.Menu>
                    </Dropdown>
-                  
                    <div className="indiv-join-button"><Button variant="primary" onClick={()=>joinRoom()} className="chatbox-join">Join Meeting</Button></div>
                    </div>
                    <div id={roomId} className="indiv-mess-append" style={{color:"black"}}>

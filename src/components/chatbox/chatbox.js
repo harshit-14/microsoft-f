@@ -34,7 +34,7 @@ export default function Chat(props) {
     useEffect(()=>{
         socketInstance.current=io('https://ms-teams-backend-hk.herokuapp.com');
         socketInstance.current.emit('join-room',roomId);
-        
+
     },[])
 
     useEffect(() => {

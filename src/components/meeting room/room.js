@@ -42,7 +42,6 @@ export default function Room(props){
     const [messname,setMessName] = useState('');
     const [mess,setMess] = useState('')
     const myScreenMedia = useRef(null)
-
     // useEffect to set peerInstance and setCUrrentUSerId
     useEffect(()=>{
       console.log(sessionStorage.getItem('name'))
