@@ -102,6 +102,8 @@ export default function ParticularRoom(props) {
 
     const joinRoom=()=>{
         history.push(`/rooms/${roomId}`)
+        socketInstance.current.disconnect()
+        console.log("disconnected socket")
         //window.open(`/rooms/${roomId}`, "_blank")    
     }
     const copyCode=()=>{

@@ -1,4 +1,4 @@
-import React,{useEffect,useState,useRef,useCallback} from 'react'
+import React,{useEffect,useState,useRef,useCallback,useLayoutEffect} from 'react'
 import io from 'socket.io-client'
 import './room.css'
 import {useParams} from 'react-router-dom'
@@ -12,6 +12,7 @@ import axios from 'axios'
 import Chat from '../room-chat/chat'
 import SignUp from './sign_up'
 import Timer from '../timer'
+import {browserHistory} from 'react-router'
 export default function Room(props){
 
     const socket = useRef(null);
@@ -42,6 +43,21 @@ export default function Room(props){
     const [messname,setMessName] = useState('');
     const [mess,setMess] = useState('')
     const myScreenMedia = useRef(null)
+
+
+   useEffect(()=> {
+  // Your code here.
+  return()=>{
+    console.log("hook he kam aege")
+        const videoTracks = currentMediaStream.current.getVideoTracks()
+                              videoTracks[0].stop() 
+                              socket.current?.disconnect()
+                              history.push('/feedback')
+   
+  }
+  
+}, [])
+
     // useEffect to set peerInstance and setCUrrentUSerId
     useEffect(()=>{
       console.log(sessionStorage.getItem('name'))

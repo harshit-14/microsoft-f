@@ -1,17 +1,26 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useHistory} from 'react-router-dom'
 import "./feedback.css"
 import axios from "axios"
 export default function Feedback(){
+    
+      useEffect(()=>{
+          return()=>{
+              history.push('/')
+          }
+      })
+   
+
     let history = useHistory();
     let star=0
     const [myrating,setMyRating] = useState(0)
-      console.log("qgrgeegegegrgggqrw    ",myrating)
     const ratingChanged = (newRating) => {
         star=newRating
-		console.log(newRating);
 	  };
+      const home=()=>{
+        history.push('/')
+      }  
       const rating=()=>{
           if(star===0)
           {
@@ -52,6 +61,7 @@ export default function Feedback(){
     activeColor="#013DC4"
   />
   <button onClick={()=>rating()} className="feedback-submit">SUBMIT</button>
+  <button onClick={()=>home()} className="feedback-submit">Home Page</button>
      </div>
      </div>
     )
