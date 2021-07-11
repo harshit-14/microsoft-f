@@ -115,6 +115,16 @@
 .indiv-upper-grid
 {
     display: grid;
-    grid-template-columns: 20% 20% 15% 25% 20%;
+    grid-template-columns: 20% 10% 10% 15% 25% 20%;
     
+}
+.leave{
+  
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    color: aliceblue;
+    border-radius: 25px;
+    background-color: rgb(212, 99, 99);
 }

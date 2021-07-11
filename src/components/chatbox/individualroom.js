@@ -130,15 +130,33 @@ export default function ParticularRoom(props) {
           </Popover.Body>
         </Popover>
       );
+      
+      const leaveGroup=()=>{
+          const leaveroom={
+              roomId:{roomId},
+              name:{name},
+              email:{email}
+          }
+          axios.post('https://ms-teams-backend-hk.herokuapp.com/chatbox/leaveroom',leaveroom)
+          .then((data)=>{
+              alert("Please reload Your Page")
+          })
+          .catch((err)=>{
+              console.log(err)
+          })
+         
+      }
     return (
         <div>
             {location.loginChat?
              
                <div className="indiv-outer">
                    <div className="indiv-mess">
+                     
                    <div  className="indiv-upper-grid">
                    <div className="indiv-room-name">{location.nameofroom}</div>
                    <input type="text"  value={window.location.href} id="url_input"  ></input>
+                   <button className="leave" onClick={()=>{leaveGroup()}}>Leave</button>
                    <Button variant="primary" className="indiv-copy-code" onClick={()=>{copyCode()}}>copy code</Button>
                    <Dropdown>
                        <Dropdown.Toggle variant="success" id="dropdown-basic" style={{width:"90%"}}>
