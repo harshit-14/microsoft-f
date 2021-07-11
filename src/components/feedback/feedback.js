@@ -61,7 +61,7 @@ export default function Feedback(){
     activeColor="#013DC4"
   />
   <button onClick={()=>rating()} className="feedback-submit">SUBMIT</button>
-  <button onClick={()=>home()} className="feedback-submit">Home Page</button>
+  <button onClick={()=>home()} className="feedback-homepage">Home Page</button>
      </div>
      </div>
     )
