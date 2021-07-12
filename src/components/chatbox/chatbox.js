@@ -29,16 +29,16 @@ export default function Chat(props) {
     const socketInstance=useRef()
     const [roomname,setroomName]=useState('')
     const [count,setCount]=useState(0)
-
-    console.log(props)
+      
+    //making socket instance
     useEffect(()=>{
         socketInstance.current=io('https://ms-teams-backend-hk.herokuapp.com');
         socketInstance.current.emit('join-room',roomId);
 
     },[])
 
+    //setting user info in session storage
     useEffect(() => {
-            console.log('useEffect count',count)
             axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/userInfo/${email}`)
             .then(data=>{
                 if(data.data)
@@ -53,6 +53,7 @@ export default function Chat(props) {
         
     }, [login,count])
 
+     //creating new room in chat room 
     const create=(e)=>{
         e.preventDefault()
         const id=uuid();
@@ -86,7 +87,8 @@ export default function Chat(props) {
             })
 
     }
-
+   
+    //joining new room in chat room option
     const join=(e)=>{
         e.preventDefault()
 
@@ -116,11 +118,6 @@ export default function Chat(props) {
             })
 
     }
-
-    console.log(roomId)
-    
-
-
     return (
         <div className="root-chat">
             {

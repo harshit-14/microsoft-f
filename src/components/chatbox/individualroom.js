@@ -18,9 +18,7 @@ export default function ParticularRoom(props) {
     const [email,setEmail]=useState(sessionStorage.getItem('email'))
     const [participantsName,setParticipantsName] =  useState([])
 
-    
-    
-    console.log(props)
+    //fetching all the messages
     useEffect(() => {
         axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/mess/${roomId}`)
             .then(data=>{
@@ -30,7 +28,7 @@ export default function ParticularRoom(props) {
                     setStoredMessages(data.data.message)
                 }
         })
-
+      //fetching room info
         axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/roomInfo/${roomId}`)
             .then(data=>{
                 console.log(data.data.participants)
@@ -38,7 +36,8 @@ export default function ParticularRoom(props) {
             })
             .catch(err=>console.log(err))
     },[roomId])
-
+    
+    //receive a message from socket connection
     useEffect(()=>{
         socketInstance.current?.off('recieve-mess').on('recieve-mess',(data)=>{
             if(roomId===data.roomId)
@@ -64,7 +63,7 @@ export default function ParticularRoom(props) {
 
     const sendMess=(e)=>{
         e.preventDefault()
-        //socket emit
+        //emit message from socket
         const data={
             roomId,
             name,
@@ -72,7 +71,7 @@ export default function ParticularRoom(props) {
             mess
         }
         socketInstance.current.emit('send',data)
-        //post req
+        //post request for sending messages for saving in database
         axios.post('https://ms-teams-backend-hk.herokuapp.com/chatbox/messArrived',data)
             .then(user=>{
                 console.log(user)
@@ -81,7 +80,7 @@ export default function ParticularRoom(props) {
                 console.log(err)
             })
 
-        //display
+        //display th messages
         const outer=document.getElementById(roomId)
         if(outer)
         {
@@ -103,8 +102,7 @@ export default function ParticularRoom(props) {
     const joinRoom=()=>{
         history.push(`/rooms/${roomId}`)
         socketInstance.current.disconnect()
-        console.log("disconnected socket")
-        //window.open(`/rooms/${roomId}`, "_blank")    
+        console.log("disconnected socket")   
     }
     const copyCode=()=>{
         var x = document.getElementById("url_input");
@@ -130,7 +128,7 @@ export default function ParticularRoom(props) {
           </Popover.Body>
         </Popover>
       );
-      
+       //user is leaving the team
       const leaveGroup=()=>{
           const leaveroom={
               roomId:{roomId},

@@ -20,6 +20,7 @@ export default function SignUp(props)
 			password:password
 
 		}
+        //post request for user regiester
        //https://ms-teams-backend-hk.herokuapp.com/api/auth/register
 		axios.post('https://ms-teams-backend-hk.herokuapp.com/register',(data))
 		.then((res)=>{

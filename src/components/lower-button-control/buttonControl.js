@@ -28,6 +28,7 @@ export default function ButtonControl(props)
 
     const [time,setTime] = useState('')
       
+    //receving hand raise message
     useEffect(()=>{
         props.socket?.off("receive-raise-hand").on("receive-raise-hand",(name,roomid)=>{
             
@@ -46,7 +47,7 @@ export default function ButtonControl(props)
       })
        
        
-
+   //displaying the time 
 useEffect(()=>{
     const temp = setInterval(()=>{
         var x  = new Date();
@@ -78,8 +79,6 @@ useEffect(()=>{
     },1000)
     return ()=>{clearInterval(temp)}
  },[])
- 
-   // console.log("length of participants is-------------",props.len)
 return(
     <>
     

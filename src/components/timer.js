@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
- 
+ // video duration
 export default function Timer(){
     const [timer,setTimer] = useState("")
     const [second,setSecond] = useState(0)

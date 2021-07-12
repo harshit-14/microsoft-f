@@ -4,13 +4,6 @@ import { useHistory} from 'react-router-dom'
 import "./feedback.css"
 import axios from "axios"
 export default function Feedback(){
-    
-      useEffect(()=>{
-          return()=>{
-              history.push('/')
-          }
-      })
-   
 
     let history = useHistory();
     let star=0
@@ -21,6 +14,7 @@ export default function Feedback(){
       const home=()=>{
         history.push('/')
       }  
+      //post request for storing rating from user 
       const rating=()=>{
           if(star===0)
           {

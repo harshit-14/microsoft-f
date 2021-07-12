@@ -16,7 +16,7 @@ export default function Chat(props)
          props.setMessName(name)
      }
   }
-     
+     //sending messages
     const submitbutton =  useCallback(()=>{
         if(data)
         { 
@@ -49,7 +49,7 @@ export default function Chat(props)
         
     })
 
-   
+   //receving messages
     useEffect(()=>{
      
             props.socket?.off('receive-message').on('receive-message',(message,roomI,currentUserId,name)=>{ 
