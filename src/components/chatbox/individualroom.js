@@ -20,7 +20,7 @@ export default function ParticularRoom(props) {
 
     //fetching all the messages
     useEffect(() => {
-        axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/mess/${roomId}`)
+        axios.get(`https://ms-team-backend-hk.herokuapp.com/chatbox/mess/${roomId}`)
             .then(data=>{
                 console.log(data)
                 if(data.data)
@@ -29,7 +29,7 @@ export default function ParticularRoom(props) {
                 }
         })
       //fetching room info
-        axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/roomInfo/${roomId}`)
+        axios.get(`https://ms-team-backend-hk.herokuapp.com/chatbox/roomInfo/${roomId}`)
             .then(data=>{
                 console.log(data.data.participants)
                setParticipantsName(data.data.participants)
@@ -72,7 +72,7 @@ export default function ParticularRoom(props) {
         }
         socketInstance.current.emit('send',data)
         //post request for sending messages for saving in database
-        axios.post('https://ms-teams-backend-hk.herokuapp.com/chatbox/messArrived',data)
+        axios.post('https://ms-team-backend-hk.herokuapp.com/chatbox/messArrived',data)
             .then(user=>{
                 console.log(user)
             })
