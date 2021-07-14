@@ -19,7 +19,7 @@ export default function SignUpChat(props)
 
 		}
        //https://ms-teams-backend-hk.herokuapp.com/register
-		axios.post('https://ms-teams-backend-hk.herokuapp.com/register',(data))
+		axios.post('https://ms-team-backend-hk.herokuapp.com/register',(data))
 		.then((res)=>{
             sessionStorage.setItem('email',res.data.user.email)
             sessionStorage.setItem('name',res.data.user.name)
