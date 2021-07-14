@@ -80,7 +80,7 @@ export default function Room(props){
           if(currentUserId)
           {
               //https://ms-teams-backend-hk.herokuapp.com
-              socket.current=io.connect('https://ms-teams-backend-hk.herokuapp.com')
+              socket.current=io.connect('https://ms-team-backend-hk.herokuapp.com/')
               socket.current.on('get:peerId',()=>{
               socket.current.emit('send:peerId',currentUserId)
              })
@@ -233,7 +233,7 @@ export default function Room(props){
               }
             
              //https://ms-teams-backend-hk.herokuapp.com/name
-                axios.post('https://ms-teams-backend-hk.herokuapp.com/name',(temp))
+                axios.post('https://ms-team-backend-hk.herokuapp.com/name',(temp))
                 .then((res)=>{
 
               const newParticipant={
