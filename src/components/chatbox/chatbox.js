@@ -39,7 +39,7 @@ export default function Chat(props) {
 
     //setting user info in session storage
     useEffect(() => {
-            axios.get(`https://ms-teams-backend-hk.herokuapp.com/chatbox/userInfo/${email}`)
+            axios.get(`https://ms-team-backend-hk.herokuapp.com/chatbox/userInfo/${email}`)
             .then(data=>{
                 if(data.data)
                 {
