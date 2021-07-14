@@ -26,7 +26,7 @@ export default function Feedback(){
                   rating:star
               }
               console.log("star is ",star)
-              axios.post("https://ms-teams-backend-hk.herokuapp.com/api/feedback",rate)
+              axios.post("https://ms-team-backend-hk.herokuapp.com/api/feedback",rate)
               .then((res)=>{
                   console.log("your feedback has been send")
               })
