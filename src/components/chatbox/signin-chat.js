@@ -17,7 +17,7 @@ export default function SignInChat(props)
 			password:password
 		}
          //https://ms-teams-backend-hk.herokuapp.com/login
-		axios.post('https://ms-teams-backend-hk.herokuapp.com/login',(data))
+		axios.post('https://ms-team-backend-hk.herokuapp.com/login',(data))
 		.then((res)=>{
 			    sessionStorage.setItem('email',res.data.user.email)
                 sessionStorage.setItem('name',res.data.user.name)
