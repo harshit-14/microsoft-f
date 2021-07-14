@@ -17,7 +17,7 @@ export default function ShareMeet(props) {
             url:window.location.href
         }
         //sending link via emain
-         const res  = await fetch(`https://ms-teams-backend-hk.herokuapp.com/api/send`,{
+         const res  = await fetch(`https://ms-team-backend-hk.herokuapp.com/api/send`,{
              method:'POST',
              headers:{
                  'Accept':'application/json',
